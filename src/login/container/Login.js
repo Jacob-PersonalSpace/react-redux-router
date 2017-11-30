@@ -8,6 +8,7 @@ import LoginContainer from '../component/LoginContainer.jsx';
 import {
     inputUserName,
     inputPassword,
+    onLogin,
 } from '../action';
 
 const Login = ({ state, actions }) => (
@@ -20,6 +21,7 @@ const Login = ({ state, actions }) => (
             inputUserName: actions.inputUserName,
             inputPassword: actions.inputPassword,
             dumpToRegist: actions.dumpToRegist,
+            onLogin: actions.onLogin,
         }}
     />
 )
@@ -35,6 +37,7 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         inputUserName,
         inputPassword,
+        onLogin,
         dumpToRegist: () => push('/regist'),
     }, dispatch)
 })

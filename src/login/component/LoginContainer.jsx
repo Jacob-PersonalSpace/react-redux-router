@@ -15,7 +15,7 @@ class LoginContainer extends Component {
                 <input type="text" value={state.userName} onChange={evt => actions.inputUserName(evt.target.value)} />
                 <span>password</span>
                 <input type="password" value={state.passWord} onChange={evt => actions.inputPassword(evt.target.value)} />
-                <button>Login In</button>
+                <button onClick={() => actions.onLogin(state.userName, state.passWord)}>Login In</button>
                 <button onClick={() => actions.dumpToRegist()}>Regist</button>
             </div>
         )
