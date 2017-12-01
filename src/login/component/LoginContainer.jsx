@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class LoginContainer extends Component {
                 <input type="password" value={state.passWord} onChange={evt => actions.inputPassword(evt.target.value)} />
                 <button>Login In</button>
                 <button onClick={() => actions.dumpToRegist()}>Regist</button>
+                {this.props.children || "Welcome to your Inbox"}
             </div>
         )
     }
