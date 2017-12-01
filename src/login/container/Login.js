@@ -10,19 +10,21 @@ import {
     inputPassword,
 } from '../action';
 
-const Login = ({ state, actions }) => (
-    <LoginContainer
-        state={{
-            userName: state.userName,
-            passWord: state.passWord,
-        }}
-        actions={{
-            inputUserName: actions.inputUserName,
-            inputPassword: actions.inputPassword,
-            dumpToRegist: actions.dumpToRegist,
-        }}
-    />
-)
+const Login = ({ state, actions }) => {
+    return (
+        <LoginContainer
+            state={{
+                userName: state.userName,
+                passWord: state.passWord,
+            }}
+            actions={{
+                inputUserName: actions.inputUserName,
+                inputPassword: actions.inputPassword,
+                dumpToRegist: actions.dumpToRegist,
+            }}
+        />
+    )
+}
 
 const mapStateToProps = state => ({
     state: {
