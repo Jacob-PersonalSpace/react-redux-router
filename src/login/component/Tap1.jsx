@@ -6,6 +6,26 @@ class Tap1 extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        console.log('Tap1 componentDidMount')
+    }
+
+    componentWillMount() {
+        console.log('Tap1 componentWillMount')
+    }
+
+    componentWillUnmount() {
+        console.log('Tap1 componentWillUnmount')
+    }
+
+    componentWillUpdate() {
+        console.log('Tap1 componentWillUpdate')
+    }
+
+    componentDidUpdate() {
+        console.log('Tap1 componentDidUpdate')
+    }
+
     render() {
         const { state, actions } = this.props;
 
