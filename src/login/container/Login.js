@@ -8,6 +8,8 @@ import LoginContainer from '../component/LoginContainer.jsx';
 import {
     inputUserName,
     inputPassword,
+    onChangeTreeData,
+    loginIn,
 } from '../action';
 
 const Login = ({ state, actions }) => (
@@ -15,11 +17,14 @@ const Login = ({ state, actions }) => (
         state={{
             userName: state.userName,
             passWord: state.passWord,
+            treeData: state.treeData,
         }}
         actions={{
             inputUserName: actions.inputUserName,
             inputPassword: actions.inputPassword,
             dumpToRegist: actions.dumpToRegist,
+            onChangeTreeData: actions.onChangeTreeData,
+            loginIn: actions.loginIn,
         }}
     />
 )
@@ -28,6 +33,7 @@ const mapStateToProps = state => ({
     state: {
         userName: state.userName,
         passWord: state.passWord,
+        treeData: state.treeData,
     }
 })
 
@@ -36,6 +42,8 @@ const mapDispatchToProps = dispatch => ({
         inputUserName,
         inputPassword,
         dumpToRegist: () => push('/regist'),
+        onChangeTreeData,
+        loginIn,
     }, dispatch)
 })
 

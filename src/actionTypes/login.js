@@ -6,3 +6,4 @@ export const INPUT_USERNAME = 'INPUT_USERNAME'
 export const INPUT_PASSWORD = 'INPUT_PASSWORD'
 
 export const GO_TO_REGIST = 'GO_TO_REGIST'
+export const CHANGE_TREE_DATA = 'CHANGE_TREE_DATA'
