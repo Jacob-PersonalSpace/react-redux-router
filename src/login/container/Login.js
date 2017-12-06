@@ -15,6 +15,7 @@ const Login = ({ state, actions }) => (
         state={{
             userName: state.userName,
             passWord: state.passWord,
+            treeData: state.treeData,
         }}
         actions={{
             inputUserName: actions.inputUserName,
@@ -28,6 +29,7 @@ const mapStateToProps = state => ({
     state: {
         userName: state.userName,
         passWord: state.passWord,
+        treeData: state.treeData,
     }
 })
 
