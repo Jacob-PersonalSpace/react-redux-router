@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import _ from 'lodash'
 
+import '../../css/login/tree.less';
+
 class Tree extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +16,7 @@ class Tree extends Component {
         let lines = []
 
         for (let i = 0; i < d.deep; i++) {
-            lines.push(<span key={d._id + '__line' + i}>空格</span>)
+            lines.push(<div key={d._id + '__line' + i}>空格</div>)
         }
 
         return lines
@@ -22,11 +24,11 @@ class Tree extends Component {
 
     renderTree(leaves, d) {
         leaves.push(
-            <div key={d._id + '__row'}>
+            <div key={d._id + '__row'} className="row">
                 {
                     this.renderLine(d)
                 }
-                <span key={d._id + '__item'}>{d.name}</span>
+                <div key={d._id + '__node'}>{d.name}</div>
             </div>
         )
 
@@ -41,7 +43,13 @@ class Tree extends Component {
 
         this.renderTree(leaves, state.treeData)
 
-        return leaves
+        return (
+            <div className="tree">
+                {
+                    leaves
+                }
+            </div>
+        )
     }
 }
 
