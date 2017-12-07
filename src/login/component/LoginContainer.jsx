@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { withRouter } from 'react-router'
 import _ from 'lodash'
 
 import Tree from './Tree.jsx'
@@ -19,7 +20,7 @@ class LoginContainer extends Component {
                 <span>password</span>
                 <input type="password" value={state.passWord} onChange={evt => actions.inputPassword(evt.target.value)} />
                 <button>Login In</button>
-                <button onClick={() => actions.dumpToRegist()}>Regist</button>
+                <button onClick={() => this.props.history.push('/regist')}>Regist</button>
                 <div>
                     {
                         !_.isEmpty(state.treeData) ?
@@ -38,4 +39,4 @@ class LoginContainer extends Component {
     }
 }
 
-export default LoginContainer;
+export default withRouter(LoginContainer);

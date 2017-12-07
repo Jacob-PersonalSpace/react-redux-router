@@ -1,7 +1,6 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
 import LoginContainer from '../component/LoginContainer.jsx';
 
@@ -20,7 +19,6 @@ const Login = ({ state, actions }) => (
         actions={{
             inputUserName: actions.inputUserName,
             inputPassword: actions.inputPassword,
-            dumpToRegist: actions.dumpToRegist,
         }}
     />
 )
@@ -37,7 +35,6 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         inputUserName,
         inputPassword,
-        dumpToRegist: () => push('/regist'),
     }, dispatch)
 })
 
