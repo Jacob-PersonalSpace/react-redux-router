@@ -7,27 +7,37 @@ import LoginContainer from '../component/LoginContainer.jsx';
 import {
     inputUserName,
     inputPassword,
+    loginIn,
+    onSelectFabricItem,
+    onChangeNodeExpanded,
 } from '../action';
 
-const Login = ({ state, actions }) => (
-    <LoginContainer
+const Login = ({ state, actions }) => {
+    return (<LoginContainer
         state={{
             userName: state.userName,
             passWord: state.passWord,
             treeData: state.treeData,
+            fabricItemList: state.fabricItemList,
+            selectedFabricItem: state.selectedFabricItem,
         }}
         actions={{
             inputUserName: actions.inputUserName,
             inputPassword: actions.inputPassword,
+            loginIn: actions.loginIn,
+            onSelectFabricItem: actions.onSelectFabricItem,
+            onChangeNodeExpanded: actions.onChangeNodeExpanded,
         }}
-    />
-)
+    />)
+}
 
 const mapStateToProps = state => ({
     state: {
-        userName: state.userName,
-        passWord: state.passWord,
-        treeData: state.treeData,
+        userName: state.get('userName'),
+        passWord: state.get('passWord'),
+        treeData: state.get('treeData'),
+        fabricItemList: state.get('fabricItemList'),
+        selectedFabricItem: state.get('selectedFabricItem'),
     }
 })
 
@@ -35,6 +45,9 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         inputUserName,
         inputPassword,
+        loginIn,
+        onSelectFabricItem,
+        onChangeNodeExpanded,
     }, dispatch)
 })
 

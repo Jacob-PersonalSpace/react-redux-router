@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import _ from 'lodash'
 
 import Tree from './Tree.jsx'
+import FabricItemList from './FabricItemList.jsx'
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -21,18 +22,38 @@ class LoginContainer extends Component {
                 <input type="password" value={state.passWord} onChange={evt => actions.inputPassword(evt.target.value)} />
                 <button>Login In</button>
                 <button onClick={() => this.props.history.push('/regist')}>Regist</button>
-                <div>
-                    {
-                        !_.isEmpty(state.treeData) ?
-                            <Tree
-                                state={{
-                                    treeData: state.treeData,
-                                }}
-                                actions={{
-                                }}
-                            /> :
-                            false
-                    }
+                <button onClick={() => actions.loginIn()}>Login In</button>
+                <div style={{ display: 'inline-block' }}>
+                    <div>
+                        {
+                            !_.isEmpty(state.fabricItemList) ?
+                                <FabricItemList
+                                    state={{
+                                        selectedFabricItem: state.selectedFabricItem,
+                                        fabricItemList: state.fabricItemList,
+                                    }}
+                                    actions={{
+                                        onSelectFabricItem: actions.onSelectFabricItem,
+                                    }}
+                                /> :
+                                false
+                        }
+                    </div>
+                    <div>
+                        {
+                            !_.isEmpty(state.treeData) ?
+                                <Tree
+                                    state={{
+                                        selectedFabricItem: state.selectedFabricItem,
+                                        treeData: state.treeData,
+                                    }}
+                                    actions={{
+                                        onChangeNodeExpanded: actions.onChangeNodeExpanded,
+                                    }}
+                                /> :
+                                false
+                        }
+                    </div>
                 </div>
             </div>
         )

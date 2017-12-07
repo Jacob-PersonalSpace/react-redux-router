@@ -28,25 +28,25 @@ class Tree extends Component {
                 {
                     this.renderLine(d)
                 }
-                <div key={d._id + '__node'}>{d.name}</div>
+                <div onClick={() => this.props.actions.onChangeNodeExpanded(d.name)} key={d._id + '__node'}>{d.name}</div>
             </div>
         )
 
-        return !_.isEmpty(d.children) && d.expand ?
+        return !_.isEmpty(d.children) && d.expanded ?
             d.children.forEach(c => this.renderTree(leaves, c)) :
             false;
     }
 
     render() {
         const { state, actions } = this.props;
-        let leaves = []
+        let nodes = []
 
-        this.renderTree(leaves, state.treeData)
+        this.renderTree(nodes, state.treeData)
 
         return (
             <div className="tree">
                 {
-                    leaves
+                    nodes
                 }
             </div>
         )
