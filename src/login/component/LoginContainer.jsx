@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { withRouter } from 'react-router'
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -16,10 +17,10 @@ class LoginContainer extends Component {
                 <span>password</span>
                 <input type="password" value={state.passWord} onChange={evt => actions.inputPassword(evt.target.value)} />
                 <button>Login In</button>
-                <button onClick={() => actions.dumpToRegist()}>Regist</button>
+                <button onClick={() => this.props.history.push('/regist')}>Regist</button>
             </div>
         )
     }
 }
 
-export default LoginContainer;
+export default withRouter(LoginContainer);
