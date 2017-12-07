@@ -1,16 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-// import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { routerMiddleware, connectRouter } from 'connected-react-router/immutable'
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
+import { Map } from 'immutable';
 
 import rootReducer from './reducer';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
+
 const logger = createLogger()
 
-const initialState = {}
+const initialState = Map()
 const enhancers = []
 const middleWare = [
     thunk,
@@ -32,8 +33,7 @@ const composedEnhancers = compose(
 )
 
 const store = createStore(
-    rootReducer,
-    // connectRouter(history)(rootReducer),
+    connectRouter(history)(rootReducer),
     initialState,
     composedEnhancers,
 )

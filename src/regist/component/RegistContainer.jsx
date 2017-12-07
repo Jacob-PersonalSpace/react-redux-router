@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { withRouter } from 'react-router'
 
 class RegistContainer extends Component {
     constructor(props) {
@@ -19,10 +20,10 @@ class RegistContainer extends Component {
                 <input type="password" value={state.confirmPassword} onChange={evt => actions.inputConfirmPassword(evt.target.value)} />
                 <button>Regist</button>
                 <button onClick={() => actions.reset()}>Reset</button>
-                <button onClick={() => actions.dumpToLogin()}>Back To Login</button>
+                <button onClick={() => this.props.history.push('/login')}>Back To Login</button>
             </div>
         )
     }
 }
 
-export default RegistContainer;
+export default withRouter(RegistContainer);
