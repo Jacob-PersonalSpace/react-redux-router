@@ -46,8 +46,11 @@ class LoginContainer extends Component {
                                     state={{
                                         selectedFabricItem: state.selectedFabricItem,
                                         treeData: state.treeData,
+                                        deepOfChildren: 1,
+                                        deepOfParent: 1,
                                     }}
                                     actions={{
+                                        onSelectFabricItem: actions.onSelectFabricItem,
                                         onChangeNodeExpanded: actions.onChangeNodeExpanded,
                                     }}
                                 /> :

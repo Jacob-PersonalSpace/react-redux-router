@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import _ from 'lodash';
+import Immutable, { fromJS } from 'immutable';
 
 import {
     INPUT_USERNAME,
@@ -33,7 +34,7 @@ export const passWord = (state = '', action) => {
     }
 }
 
-const initTreeData = {
+let initTreeData = {
     _id: 1,
     name: 'item 1',
     children: [
@@ -42,33 +43,313 @@ const initTreeData = {
             name: 'item 1-1',
             children: [
                 {
-                    _id: 4,
+                    _id: 3,
                     name: 'item 1-1-1',
+                    children: [
+                        {
+                            _id: 4,
+                            name: 'item 1-1-1-1',
+                            children: [
+                                {
+                                    _id: 5,
+                                    name: 'item 1-1-1-1-1',
+                                    children: [
+                                        {
+                                            _id: 6,
+                                            name: 'item 1-1-1-1-1-1',
+                                        },
+                                        {
+                                            _id: 7,
+                                            name: 'item 1-1-1-1-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 8,
+                                    name: 'item 1-1-1-1-2',
+                                    children: [
+                                        {
+                                            _id: 9,
+                                            name: 'item 1-1-1-1-2-1',
+                                        },
+                                        {
+                                            _id: 10,
+                                            name: 'item 1-1-1-1-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            _id: 11,
+                            name: 'item 1-1-1-2',
+                            children: [
+                                {
+                                    _id: 12,
+                                    name: 'item 1-1-1-2-1',
+                                    children: [
+                                        {
+                                            _id: 13,
+                                            name: 'item 1-1-1-2-1-1',
+                                        },
+                                        {
+                                            _id: 14,
+                                            name: 'item 1-1-1-2-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 15,
+                                    name: 'item 1-1-1-2-2',
+                                    children: [
+                                        {
+                                            _id: 16,
+                                            name: 'item 1-1-1-2-2-1',
+                                        },
+                                        {
+                                            _id: 17,
+                                            name: 'item 1-1-1-2-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
-                    _id: 5,
+                    _id: 18,
                     name: 'item 1-1-2',
+                    children: [
+                        {
+                            _id: 19,
+                            name: 'item 1-1-2-1',
+                            children: [
+                                {
+                                    _id: 20,
+                                    name: 'item 1-1-2-1-1',
+                                    children: [
+                                        {
+                                            _id: 21,
+                                            name: 'item 1-1-2-1-1-1',
+                                        },
+                                        {
+                                            _id: 22,
+                                            name: 'item 1-1-2-1-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 23,
+                                    name: 'item 1-1-2-1-2',
+                                    children: [
+                                        {
+                                            _id: 24,
+                                            name: 'item 1-1-2-1-2-1',
+                                        },
+                                        {
+                                            _id: 25,
+                                            name: 'item 1-1-2-1-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            _id: 26,
+                            name: 'item 1-1-2-2',
+                            children: [
+                                {
+                                    _id: 27,
+                                    name: 'item 1-1-2-2-1',
+                                    children: [
+                                        {
+                                            _id: 28,
+                                            name: 'item 1-1-2-2-1-1',
+                                        },
+                                        {
+                                            _id: 29,
+                                            name: 'item 1-1-2-2-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 30,
+                                    name: 'item 1-1-2-2-2',
+                                    children: [
+                                        {
+                                            _id: 31,
+                                            name: 'item 1-1-2-2-2-1',
+                                        },
+                                        {
+                                            _id: 32,
+                                            name: 'item 1-1-2-2-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         },
         {
-            _id: 3,
+            _id: 33,
             name: 'item 1-2',
             children: [
                 {
-                    _id: 6,
+                    _id: 34,
                     name: 'item 1-2-1',
+                    children: [
+                        {
+                            _id: 35,
+                            name: 'item 1-2-1-1',
+                            children: [
+                                {
+                                    _id: 36,
+                                    name: 'item 1-2-1-1-1',
+                                    children: [
+                                        {
+                                            _id: 37,
+                                            name: 'item 1-2-1-1-1-1',
+                                        },
+                                        {
+                                            _id: 38,
+                                            name: 'item 1-2-1-1-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 39,
+                                    name: 'item 1-2-1-1-2',
+                                    children: [
+                                        {
+                                            _id: 40,
+                                            name: 'item 1-2-1-1-2-1',
+                                        },
+                                        {
+                                            _id: 41,
+                                            name: 'item 1-2-1-1-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            _id: 42,
+                            name: 'item 1-2-1-2',
+                            children: [
+                                {
+                                    _id: 43,
+                                    name: 'item 1-2-1-2-1',
+                                    children: [
+                                        {
+                                            _id: 44,
+                                            name: 'item 1-2-1-2-1-1',
+                                        },
+                                        {
+                                            _id: 45,
+                                            name: 'item 1-2-1-2-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 46,
+                                    name: 'item 1-2-1-2-2',
+                                    children: [
+                                        {
+                                            _id: 47,
+                                            name: 'item 1-2-1-2-2-1',
+                                        },
+                                        {
+                                            _id: 48,
+                                            name: 'item 1-2-1-2-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
-                    _id: 7,
+                    _id: 49,
                     name: 'item 1-2-2',
+                    children: [
+                        {
+                            _id: 50,
+                            name: 'item 1-2-2-1',
+                            children: [
+                                {
+                                    _id: 51,
+                                    name: 'item 1-2-2-1-1',
+                                    children: [
+                                        {
+                                            _id: 52,
+                                            name: 'item 1-2-2-1-1-1',
+                                        },
+                                        {
+                                            _id: 53,
+                                            name: 'item 1-2-2-1-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 54,
+                                    name: 'item 1-2-2-1-2',
+                                    children: [
+                                        {
+                                            _id: 55,
+                                            name: 'item 1-2-2-1-2-1',
+                                        },
+                                        {
+                                            _id: 56,
+                                            name: 'item 1-2-2-1-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            _id: 57,
+                            name: 'item 1-2-2-2',
+                            children: [
+                                {
+                                    _id: 58,
+                                    name: 'item 1-2-2-2-1',
+                                    children: [
+                                        {
+                                            _id: 59,
+                                            name: 'item 1-2-2-2-1-1',
+                                        },
+                                        {
+                                            _id: 60,
+                                            name: 'item 1-2-2-2-1-2',
+                                        },
+                                    ],
+                                },
+                                {
+                                    _id: 61,
+                                    name: 'item 1-2-2-2-2',
+                                    children: [
+                                        {
+                                            _id: 62,
+                                            name: 'item 1-2-2-2-2-1',
+                                        },
+                                        {
+                                            _id: 63,
+                                            name: 'item 1-2-2-2-2-2',
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         },
     ],
 }
 
-const genTree = (d, i) => {
+const genTreeData = (d, i) => {
     d.deep = i++;
     d.expanded = true;
 
@@ -76,7 +357,7 @@ const genTree = (d, i) => {
         d.children.forEach(child => {
             child.parent = d;
 
-            genTree(child, i)
+            genTreeData(child, i)
         })
     }
 }
@@ -95,97 +376,21 @@ export const treeData = (state = initTreeData, action) => {
             return state;
             break;
 
-        case EXPAND_NODE:
-            console.log('???')
-            return state;
-            break;
+        // case EXPAND_NODE:
+        //     let node = findNode(state, action.payload)
+        //     console.log(node)
+
+        //     return state;
+        //     break;
 
         case COLLAPSE_NODE:
             break;
 
         case SUCCESS_LOGIN:
-            let newNode = {
-                _id: 1,
-                name: 'item 1',
-                children: [
-                    {
-                        _id: 2,
-                        name: 'item 1-1',
-                        children: [
-                            {
-                                _id: 4,
-                                name: 'item 1-1-1',
-                                children: [
-                                    {
-                                        _id: 8,
-                                        name: 'item 1-1-1-1',
-                                    },
-                                    {
-                                        _id: 9,
-                                        name: 'item 1-1-1-2',
-                                    },
-                                ],
-                            },
-                            {
-                                _id: 5,
-                                name: 'item 1-1-2',
-                                children: [
-                                    {
-                                        _id: 10,
-                                        name: 'item 1-1-2-1',
-                                    },
-                                    {
-                                        _id: 11,
-                                        name: 'item 1-1-2-2',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        _id: 3,
-                        name: 'item 1-2',
-                        children: [
-                            {
-                                _id: 6,
-                                name: 'item 1-2-1',
-                                children: [
-                                    {
-                                        _id: 12,
-                                        name: 'item 1-2-1-1',
-                                    },
-                                    {
-                                        _id: 13,
-                                        name: 'item 1-2-1-2',
-                                    },
-                                ],
-                            },
-                            {
-                                _id: 7,
-                                name: 'item 1-2-2',
-                                children: [
-                                    {
-                                        _id: 14,
-                                        name: 'item 1-2-2-1',
-                                    },
-                                    {
-                                        _id: 15,
-                                        name: 'item 1-2-2-2',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                ],
-            }
-
-            genTree(newNode, i)
-
-            return newNode;
             break;
 
         default:
-            genTree(state, i)
+            genTreeData(state, 0);
             return state;
     }
 }
@@ -223,7 +428,7 @@ const initFabricItemList = [
     'item 2-2-2-2',
 ]
 
-export const fabricItemList = (state = initFabricItemList, action) => {
+export const fabricItemList = (state = fromJS(initFabricItemList), action) => {
     switch (action.type) {
         default:
             return state;
