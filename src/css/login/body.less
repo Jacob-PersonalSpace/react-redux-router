@@ -1,0 +1,31 @@
+.body {
+    .fabricItemList {
+        display: inline-block;
+        width: 200px;
+        height: 700px;
+        overflow-y: auto;
+        overflow-x: auto;
+        a:hover {
+            color: blue;
+            cursor: pointer;
+        }
+        a.active {
+            color: red;
+        }
+    }
+    .tree {
+        display: inline-block;
+        width: 700px;
+        height: 700px;
+        overflow-y: auto;
+        overflow-x: auto;
+        .row {
+            div {
+                display: inline-block;
+            }
+            .active {
+                color: red;
+            }
+        }
+    }
+}

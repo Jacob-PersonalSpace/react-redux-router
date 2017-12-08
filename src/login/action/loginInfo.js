@@ -4,6 +4,8 @@ import {
     SUCCESS_LOGIN,
     SELECT_FABRICITEM,
     EXPAND_NODE,
+    EXPAND_ALL,
+    COLLAPSE_ALL,
 } from '../../actionTypes'
 
 export const inputUserName = userName => ({
@@ -28,4 +30,12 @@ export const onSelectFabricItem = fabricItem => ({
 export const onChangeNodeExpanded = fabricItem => ({
     type: EXPAND_NODE,
     payload: fabricItem,
+})
+
+export const expandAll = () => ({
+    type: EXPAND_ALL,
+})
+
+export const collapseAll = () => ({
+    type: COLLAPSE_ALL,
 })

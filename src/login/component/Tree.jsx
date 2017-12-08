@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import _ from 'lodash'
 
-import '../../css/login/tree.less';
+// import '../../css/login/tree.less';
 
 class Tree extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class Tree extends Component {
         this.genTreeData = this.genTreeData.bind(this)
         this.renderWholeTreeRecursion = this.renderWholeTreeRecursion.bind(this)
         this.renderLine = this.renderLine.bind(this)
+        this.renderNode = this.renderNode.bind(this)
         this.searchNode = this.searchNode.bind(this)
         this.renderSubTree = this.renderSubTree.bind(this)
         this.renderSubTreeRecursion = this.renderSubTreeRecursion.bind(this)
@@ -44,14 +45,42 @@ class Tree extends Component {
         return null
     }
 
+    renderLine(node, currentDeepth) {
+        let lines = []
+
+        for (let i = 0; i <= currentDeepth; i++) {
+            lines.push(<div key={node._id + '__line' + i}>空格</div>)
+        }
+
+        return lines
+    }
+
+    renderNode(node) {
+        return (
+            <div
+                className={this.props.state.selectedFabricItem === node.name ? 'active' : ''}
+                onClick={() => this.props.actions.onSelectFabricItem(node.name)}
+                key={node._id + '__node'}
+            >
+                {
+                    node.name
+                }
+            </div>
+        )
+    }
+
     renderTreeRow(node, currentDeepth) {
         return (
             <div key={node._id + '__row'} className="row">
                 {
                     this.renderLine(node, currentDeepth)
                 }
+                {
+
+                    this.renderNode(node)
+                }
                 {/* <div onClick={() => this.onChangeNodeExpanded(d)} key={d._id + '__node'}>{d.name}</div> */}
-                <div className={this.props.state.selectedFabricItem === node.name ? 'active' : ''} onClick={() => this.props.actions.onSelectFabricItem(node.name)} key={node._id + '__node'}>{node.name}</div>
+
             </div>
         )
     }
@@ -82,16 +111,6 @@ class Tree extends Component {
         }
 
         this.renderSubTreeRecursion(outputTree, firstNode, 0, limitDeepth)
-    }
-
-    renderLine(node, currentDeepth) {
-        let lines = []
-
-        for (let i = 0; i <= currentDeepth; i++) {
-            lines.push(<div key={node._id + '__line' + i}>空格</div>)
-        }
-
-        return lines
     }
 
     renderSubTreeRecursion(outputTree, node, currentDeepth, limitDeepth) {
@@ -140,7 +159,7 @@ class Tree extends Component {
         }
 
         return (
-            <div className="tree">
+            <div>
                 {
                     outputTree
                 }

@@ -362,17 +362,37 @@ const genTreeData = (d, i) => {
     }
 }
 
+const expandAll = (node) => {
+    node.expanded = true;
+
+    if (!_.isEmpty(node.children)) {
+        node.children.forEach(child => {
+            expandAll(child)
+        })
+    }
+}
+
+const collapseAll = (node) => {
+    node.expanded = false;
+
+    if (!_.isEmpty(node.children)) {
+        node.children.forEach(child => {
+            collapseAll(child)
+        })
+    }
+}
+
 export const treeData = (state = initTreeData, action) => {
     let i = 0;
 
     switch (action.type) {
         case EXPAND_ALL:
-            state.expanded = true;
+            expandAll(state)
             return state;
             break;
 
         case COLLAPSE_ALL:
-            state.expanded = false;
+            collapseAll(state)
             return state;
             break;
 
@@ -400,32 +420,65 @@ const initFabricItemList = [
     'item 1-1',
     'item 1-1-1',
     'item 1-1-1-1',
+    'item 1-1-1-1-1',
+    'item 1-1-1-1-1-1',
+    'item 1-1-1-1-1-2',
+    'item 1-1-1-1-2',
+    'item 1-1-1-1-2-1',
+    'item 1-1-1-1-2-2',
     'item 1-1-1-2',
+    'item 1-1-1-2-1',
+    'item 1-1-1-2-1-1',
+    'item 1-1-1-2-1-2',
+    'item 1-1-1-2-2',
+    'item 1-1-1-2-2-1',
+    'item 1-1-1-2-2-2',
     'item 1-1-2',
     'item 1-1-2-1',
+    'item 1-1-2-1-1',
+    'item 1-1-2-1-1-1',
+    'item 1-1-2-1-1-2',
+    'item 1-1-2-1-2',
+    'item 1-1-2-1-2-1',
+    'item 1-1-2-1-2-2',
     'item 1-1-2-2',
+    'item 1-1-2-2-1',
+    'item 1-1-2-2-1-1',
+    'item 1-1-2-2-1-2',
+    'item 1-1-2-2-2',
+    'item 1-1-2-2-2-1',
+    'item 1-1-2-2-2-2',
     'item 1-2',
     'item 1-2-1',
     'item 1-2-1-1',
+    'item 1-2-1-1-1',
+    'item 1-2-1-1-1-1',
+    'item 1-2-1-1-1-2',
+    'item 1-2-1-1-2',
+    'item 1-2-1-1-2-1',
+    'item 1-2-1-1-2-2',
     'item 1-2-1-2',
+    'item 1-2-1-2-1',
+    'item 1-2-1-2-1-1',
+    'item 1-2-1-2-1-2',
+    'item 1-2-1-2-2',
+    'item 1-2-1-2-2-1',
+    'item 1-2-1-2-2-2',
     'item 1-2-2',
     'item 1-2-2-1',
+    'item 1-2-2-1-1',
+    'item 1-2-2-1-1-1',
+    'item 1-2-2-1-1-2',
+    'item 1-2-2-1-2',
+    'item 1-2-2-1-2-1',
+    'item 1-2-2-1-2-2',
     'item 1-2-2-2',
-    'item 2',
-    'item 2-1',
-    'item 2-1-1',
-    'item 2-1-1-1',
-    'item 2-1-1-2',
-    'item 2-1-2',
-    'item 2-1-2-1',
-    'item 2-1-2-2',
-    'item 2-2',
-    'item 2-2-1',
-    'item 2-2-1-1',
-    'item 2-2-1-2',
-    'item 2-2-2',
-    'item 2-2-2-1',
-    'item 2-2-2-2',
+    'item 1-2-2-2-1',
+    'item 1-2-2-2-1-1',
+    'item 1-2-2-2-1-2',
+    'item 1-2-2-2-2',
+    'item 1-2-2-2-2-1',
+    'item 1-2-2-2-2-2',
 ]
 
 export const fabricItemList = (state = fromJS(initFabricItemList), action) => {
@@ -437,6 +490,14 @@ export const fabricItemList = (state = fromJS(initFabricItemList), action) => {
 
 export const selectedFabricItem = (state = '', action) => {
     switch (action.type) {
+        case EXPAND_ALL:
+            return '';
+            break;
+
+        case COLLAPSE_ALL:
+            return '';
+            break;
+
         case SELECT_FABRICITEM:
             return action.payload;
             break;

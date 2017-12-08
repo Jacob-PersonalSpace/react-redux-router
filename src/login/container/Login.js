@@ -10,6 +10,8 @@ import {
     loginIn,
     onSelectFabricItem,
     onChangeNodeExpanded,
+    expandAll,
+    collapseAll,
 } from '../action';
 
 const Login = ({ state, actions }) => {
@@ -27,6 +29,8 @@ const Login = ({ state, actions }) => {
             loginIn: actions.loginIn,
             onSelectFabricItem: actions.onSelectFabricItem,
             onChangeNodeExpanded: actions.onChangeNodeExpanded,
+            expandAll: actions.expandAll,
+            collapseAll: actions.collapseAll,
         }}
     />)
 }
@@ -48,6 +52,8 @@ const mapDispatchToProps = dispatch => ({
         loginIn,
         onSelectFabricItem,
         onChangeNodeExpanded,
+        expandAll,
+        collapseAll,
     }, dispatch)
 })
 
