@@ -8,11 +8,6 @@ class Tree extends Component {
     constructor(props) {
         super(props);
 
-        // this.realTreeData = null;
-        this.state = {
-            realTreeData: null
-        }
-
         this.genTreeData = this.genTreeData.bind(this)
         this.renderWholeTreeRecursion = this.renderWholeTreeRecursion.bind(this)
         this.renderLine = this.renderLine.bind(this)
@@ -25,7 +20,11 @@ class Tree extends Component {
     }
 
     onChangeNodeExpanded(node) {
+        console.log('???', node.expanded)
+        console.log('???', this.props.state.treeData)
         node.expanded = !node.expanded
+        console.log('???', node.expanded)
+        console.log('???', this.props.state.treeData)
     }
 
     searchNode(d) {
@@ -49,35 +48,106 @@ class Tree extends Component {
         let lines = []
 
         for (let i = 0; i <= currentDeepth; i++) {
-            lines.push(<div key={node._id + '__line' + i}>空格</div>)
+            let classNames = ['lineBlock']
+
+            if (currentDeepth === i) {
+                classNames.push('lineHalfHorizontalRight')
+
+                if (!_.isEmpty(node.parent)) {
+                    let targetNodeIndex = node.parent.children.findIndex(v => v.name === node.name)
+
+                    if (targetNodeIndex === (node.parent.children.length - 1)) {
+                        if (this.props.state.deepOfParent > 0 && i === 0) {
+
+                        } else {
+                            classNames.push('lineHalfVerticalTop')
+                        }
+                    } else {
+                        if (this.props.state.deepOfParent > 0 && i === 0) {
+
+                        } else {
+                            classNames.push('lineFullVertical')
+                        }
+                    }
+                }
+            } else {
+                // node的第 currentDeepth - i + 1 个parent有兄弟，并且这个parent不是排最后，则加lineFullVertical
+                let parent = node;
+
+                for (let j = 0; j < (currentDeepth - i); j++) {
+                    parent = parent.parent;
+                }
+
+                if (!_.isEmpty(parent) && !_.isEmpty(parent.parent)) {
+                    let targetNodeIndex = parent.parent.children.findIndex(v => v.name === parent.name)
+
+                    if (targetNodeIndex !== (parent.parent.children.length - 1)) {
+                        if (this.props.state.deepOfParent > 0 && i === 0) {
+
+                        } else {
+                            classNames.push('lineFullVertical')
+                        }
+                    }
+                }
+            }
+
+            lines.push(<div key={node._id + '__line' + i} className={classNames.join(' ')} style={{ width: '44px' }}></div>)
         }
 
         return lines
     }
 
-    renderNode(node) {
+    renderNode(node, currentDeepth) {
+        let classNames = ['rowWrapper']
+        let space = 44 * (currentDeepth + 1)
+
+        if (this.props.state.selectedFabricItem === node.name) {
+            classNames.push('active')
+        }
+
+        let temp = node.expanded ? '-' : '+'
+
         return (
-            <div
-                className={this.props.state.selectedFabricItem === node.name ? 'active' : ''}
-                onClick={() => this.props.actions.onSelectFabricItem(node.name)}
-                key={node._id + '__node'}
-            >
-                {
-                    node.name
-                }
+            <div className="nodeContent" style={{ left: space + 'px' }}>
+                <div style={{ height: '100%' }}>
+                    <div>
+                        {
+                            !_.isEmpty(node.children) ?
+                                <button className="button" style={{ left: '-22px' }} type="button" onClick={() => this.onChangeNodeExpanded(node)}>{temp}</button> :
+                                null
+                        }
+                    </div>
+                    <div
+                        className={classNames.join(' ')}
+                        onClick={() => this.props.actions.onSelectFabricItem(node.name)}
+                        key={node._id + '__node'}
+                    >
+                        <div className="row" style={{ opacity: '1' }}>
+                            <div className="rowContents">
+                                <div className="rowLabel">
+                                    <span className="rowTitle">
+                                        {
+                                            node.name
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
 
     renderTreeRow(node, currentDeepth) {
         return (
-            <div key={node._id + '__row'} className="row">
+            <div key={node._id + '__row'} className="node" style={{ height: '62px', left: '0px', top: '0px', width: '100%' }}>
                 {
                     this.renderLine(node, currentDeepth)
                 }
                 {
 
-                    this.renderNode(node)
+                    this.renderNode(node, currentDeepth)
                 }
                 {/* <div onClick={() => this.onChangeNodeExpanded(d)} key={d._id + '__node'}>{d.name}</div> */}
 
@@ -140,6 +210,10 @@ class Tree extends Component {
         }
     }
 
+    componentWillUpdate() {
+        console.log('!!!!')
+    }
+
     render() {
         const { state, actions } = this.props;
         let outputTree = []
@@ -159,7 +233,7 @@ class Tree extends Component {
         }
 
         return (
-            <div>
+            <div style={{ overflow: 'visible', height: '0px', width: '0px' }}>
                 {
                     outputTree
                 }

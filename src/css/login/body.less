@@ -14,18 +14,230 @@
         }
     }
     .tree {
-        display: inline-block;
+        // height: 200px;
+        // width: 100px;
+        position: relative;
+        overflow: auto; //     position: relative;
         width: 700px;
-        height: 700px;
-        overflow-y: auto;
-        overflow-x: auto;
-        .row {
-            div {
+        height: 700px; //     overflow: auto;
+        display: inline-block;
+        .node {
+            min-width: 100%;
+            white-space: nowrap;
+            position: relative;
+            text-align: left;
+            .lineBlock {
+                height: 100%;
+                position: relative;
                 display: inline-block;
             }
-            .active {
-                color: red;
+            .lineHalfHorizontalRight {
+                &::before {
+                    height: 1px;
+                    top: 50%;
+                    right: 0;
+                    width: 50%;
+                    position: absolute;
+                    content: '';
+                    background-color: black;
+                }
+            }
+            .lineFullVertical {
+                &::after {
+                    position: absolute;
+                    content: '';
+                    background-color: black;
+                    width: 1px;
+                    left: 50%;
+                    top: 0;
+                    height: 100%;
+                }
+            }
+            .lineHalfVerticalTop {
+                &::after {
+                    position: absolute;
+                    content: '';
+                    background-color: black;
+                    width: 1px;
+                    left: 50%;
+                    top: 0;
+                    height: 50%;
+                }
+            }
+            .nodeContent {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                .button {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    border: none;
+                    position: absolute;
+                    border-radius: 100%;
+                    -webkit-box-shadow: 0 0 0 1px #000;
+                    box-shadow: 0 0 0 1px #000;
+                    width: 16px;
+                    height: 16px;
+                    padding: 0;
+                    top: 50%;
+                    -webkit-transform: translate(-50%, -50%);
+                    -ms-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                    cursor: pointer;
+                }
+                .rowWrapper {
+                    padding: 10px 10px 10px 0;
+                    height: 100%;
+                    -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+                    .row {
+                        height: 100%;
+                        white-space: nowrap;
+                        display: flex;
+                        .rowContentsDragDisabled {
+                            border-left: solid #bbb 1px;
+                        }
+                        .rowContents {
+                            position: relative;
+                            height: 100%;
+                            border: solid #bbb 1px;
+                            box-shadow: 0 2px 2px -2px;
+                            padding: 0 5px 0 10px;
+                            border-radius: 2px;
+                            min-width: 230px;
+                            -webkit-box-flex: 1;
+                            flex: 1 0 auto;
+                            display: flex;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            -webkit-box-pack: justify;
+                            justify-content: space-between;
+                            background-color: white;
+                            cursor: pointer;
+                            .rowLabel {
+                                .rowTitle {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                    .row>* {
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+                    }
+                }
             }
         }
-    }
+    } // .tree {
+    //     position: relative;
+    //     width: 700px;
+    //     height: 700px;
+    //     overflow: auto;
+    //     display: inline-block;
+    //     .row {
+    //         min-width: 100%;
+    //         white-space: nowrap;
+    //         position: relative;
+    //         text-align: left;
+    //         .lineBlock {
+    //             height: 100%;
+    //             position: relative;
+    //             display: inline-block;
+    //         }
+    //         .test {
+    //             &::after {
+    //                 position: absolute;
+    //                 content: '';
+    //                 background-color: black;
+    //                 width: 1px;
+    //                 left: 50%;
+    //                 top: 0;
+    //                 height: 100%;
+    //             }
+    //         }
+    //         .lineHalfHorizontalRight {
+    //             &::before {
+    //                 position: absolute;
+    //                 content: '';
+    //                 background-color: black;
+    //                 height: 1px;
+    //                 top: 50%;
+    //                 right: 0;
+    //                 width: 50%;
+    //             }
+    //         }
+    //         .lineHalfVerticalTop {
+    //             &::after {
+    //                 position: absolute;
+    //                 content: '';
+    //                 background-color: black;
+    //                 width: 1px;
+    //                 left: 50%;
+    //                 top: 0;
+    //                 height: 50%;
+    //             }
+    //         }
+    //         .lineHalfVerticalBottom {
+    //             &::after {
+    //                 position: absolute;
+    //                 content: '';
+    //                 background-color: black;
+    //                 width: 1px;
+    //                 left: 50%;
+    //                 bottom: 0;
+    //                 height: 50%;
+    //             }
+    //         }
+    //         .nodeContent {
+    //             position: absolute;
+    //             top: 0;
+    //             bottom: 0;
+    //             .rowWrapper {
+    //                 padding: 10px 10px 10px 0;
+    //                 height: 100%;
+    //                 -webkit-box-sizing: border-box;
+    //                 box-sizing: border-box;
+    //                 .row {
+    //                     height: 100%;
+    //                     white-space: nowrap;
+    //                     display: flex;
+    //                     .rowContentsDragDisabled {
+    //                         border-left: solid #bbb 1px;
+    //                     }
+    //                     .rowContents {
+    //                         position: relative;
+    //                         height: 100%;
+    //                         border: solid #bbb 1px;
+    //                         box-shadow: 0 2px 2px -2px;
+    //                         padding: 0 5px 0 10px;
+    //                         border-radius: 2px;
+    //                         min-width: 230px;
+    //                         -webkit-box-flex: 1;
+    //                         flex: 1 0 auto;
+    //                         display: flex;
+    //                         -webkit-box-align: center;
+    //                         align-items: center;
+    //                         -webkit-box-pack: justify;
+    //                         justify-content: space-between;
+    //                         background-color: white;
+    //                         cursor: pointer;
+    //                         .rowLabel {
+    //                             .rowTitle {
+    //                                 font-weight: bold;
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //                 .row>* {
+    //                     -webkit-box-sizing: border-box;
+    //                     box-sizing: border-box;
+    //                 }
+    //             }
+    //             .active {
+    //                 color: red;
+    //             }
+    //         }
+    //     }
+    // }
 }

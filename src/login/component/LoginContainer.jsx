@@ -7,6 +7,7 @@ import Tree from './Tree.jsx'
 import FabricItemList from './FabricItemList.jsx'
 
 import '../../css/login/body.less'
+// import '../../css/login/csstest.less'
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -25,6 +26,29 @@ class LoginContainer extends Component {
                 <button>Login In</button>
                 <button onClick={() => this.props.history.push('/regist')}>Regist</button>
                 <button onClick={() => actions.loginIn()}>Login In</button> */}
+
+                {/* <div className="tree">
+                    <div style={{ overflow: 'visible', height: '0px', width: '0px' }}>
+                        <div className="node" style={{ height: '62px', left: '0px', position: 'absolute', top: '0px', width: '100%' }}>
+                            <div className="lineBlock lineHalfHorizontalRight" style={{ width: '44px' }}></div>
+                            <div className="nodeContent" style={{ left: '44px' }}>
+                                <div style={{ height: '100%' }}>
+                                    <div className="rowWrapper">
+                                        <div className="row" style={{ opacity: '1' }}>
+                                            <div className="rowContents">
+                                                <div className="rowLabel">
+                                                    <span className="rowTitle">
+                                                        Fabric Item 1
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
                 <button onClick={() => actions.expandAll()}>expand all</button>
                 <button onClick={() => actions.collapseAll()}>collapse all</button>
                 <div className="body">
@@ -62,7 +86,7 @@ class LoginContainer extends Component {
                         }
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
