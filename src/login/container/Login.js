@@ -12,6 +12,7 @@ import {
     onChangeNodeExpanded,
     expandAll,
     collapseAll,
+    expandOrCollapseNode,
 } from '../action';
 
 const Login = ({ state, actions }) => {
@@ -31,6 +32,7 @@ const Login = ({ state, actions }) => {
             onChangeNodeExpanded: actions.onChangeNodeExpanded,
             expandAll: actions.expandAll,
             collapseAll: actions.collapseAll,
+            expandOrCollapseNode: actions.expandOrCollapseNode,
         }}
     />)
 }
@@ -54,6 +56,7 @@ const mapDispatchToProps = dispatch => ({
         onChangeNodeExpanded,
         expandAll,
         collapseAll,
+        expandOrCollapseNode,
     }, dispatch)
 })
 

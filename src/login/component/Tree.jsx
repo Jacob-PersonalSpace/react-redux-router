@@ -20,16 +20,11 @@ class Tree extends Component {
     }
 
     onChangeNodeExpanded(node) {
-        console.log('???', node.expanded)
-        console.log('???', this.props.state.treeData)
-        node.expanded = !node.expanded
-        console.log('???', node.expanded)
-        console.log('???', this.props.state.treeData)
+        this.props.actions.expandOrCollapseNode(node.name)
     }
 
     searchNode(d) {
         if (d.name === this.props.state.selectedFabricItem) {
-            console.log(d, this.props.state.selectedFabricItem)
             return d;
         } else if (!_.isEmpty(d.children)) {
             let result = null;
@@ -99,10 +94,12 @@ class Tree extends Component {
 
     renderNode(node, currentDeepth) {
         let classNames = ['rowWrapper']
+        let nodeClassNames = ['rowContents']
         let space = 44 * (currentDeepth + 1)
 
         if (this.props.state.selectedFabricItem === node.name) {
             classNames.push('active')
+            nodeClassNames.push('nodeHighLight')
         }
 
         let temp = node.expanded ? '-' : '+'
@@ -116,6 +113,11 @@ class Tree extends Component {
                                 <button className="button" style={{ left: '-22px' }} type="button" onClick={() => this.onChangeNodeExpanded(node)}>{temp}</button> :
                                 null
                         }
+                        {
+                            !_.isEmpty(node.children) && node.expanded ?
+                                <div className="lineChildren" style={{ width: '44px' }}></div> :
+                                null
+                        }
                     </div>
                     <div
                         className={classNames.join(' ')}
@@ -123,7 +125,7 @@ class Tree extends Component {
                         key={node._id + '__node'}
                     >
                         <div className="row" style={{ opacity: '1' }}>
-                            <div className="rowContents">
+                            <div className={nodeClassNames.join(' ')}>
                                 <div className="rowLabel">
                                     <span className="rowTitle">
                                         {
@@ -133,6 +135,15 @@ class Tree extends Component {
                                 </div>
                             </div>
                         </div>
+                        {
+                            this.props.state.selectedFabricItem === node.name ?
+                                <div>
+                                    <button className="bb" onClick={() => { alert('build FCR') }}>FCR</button>
+                                    <button className="bb" onClick={() => { alert('build TW') }}>TW</button>
+                                    <button className="bb" onClick={() => { alert('build HL') }}>HL</button>
+                                </div> :
+                                null
+                        }
                     </div>
                 </div>
             </div>
@@ -208,10 +219,6 @@ class Tree extends Component {
                 this.genTreeData(child, i)
             })
         }
-    }
-
-    componentWillUpdate() {
-        console.log('!!!!')
     }
 
     render() {

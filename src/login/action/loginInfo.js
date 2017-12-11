@@ -39,3 +39,8 @@ export const expandAll = () => ({
 export const collapseAll = () => ({
     type: COLLAPSE_ALL,
 })
+
+export const expandOrCollapseNode = name => ({
+    type: EXPAND_NODE,
+    payload: name,
+})

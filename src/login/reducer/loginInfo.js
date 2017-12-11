@@ -382,6 +382,22 @@ const collapseAll = (node) => {
     }
 }
 
+const searchNode = (node, name) => {
+    if (node.name === name) {
+        return node;
+    } else if (!_.isEmpty(node.children)) {
+        let result = null;
+
+        for (let i = 0; _.isEmpty(result) && i < node.children.length; i++) {
+            result = searchNode(node.children[i], name)
+        }
+
+        return result;
+    }
+
+    return null
+}
+
 export const treeData = (state = initTreeData, action) => {
     let i = 0;
 
@@ -396,14 +412,11 @@ export const treeData = (state = initTreeData, action) => {
             return state;
             break;
 
-        // case EXPAND_NODE:
-        //     let node = findNode(state, action.payload)
-        //     console.log(node)
-
-        //     return state;
-        //     break;
-
+        case EXPAND_NODE:
         case COLLAPSE_NODE:
+            let node = searchNode(state, action.payload)
+            node.expanded = !node.expanded;
+            return state;
             break;
 
         case SUCCESS_LOGIN:

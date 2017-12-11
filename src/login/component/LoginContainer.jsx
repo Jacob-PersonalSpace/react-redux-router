@@ -80,6 +80,7 @@ class LoginContainer extends Component {
                                     actions={{
                                         onSelectFabricItem: actions.onSelectFabricItem,
                                         onChangeNodeExpanded: actions.onChangeNodeExpanded,
+                                        expandOrCollapseNode: actions.expandOrCollapseNode,
                                     }}
                                 /> :
                                 false
