@@ -6,6 +6,7 @@ import {
     EXPAND_NODE,
     EXPAND_ALL,
     COLLAPSE_ALL,
+    RECEIVE_TREEDATA,
 } from '../../actionTypes'
 
 export const inputUserName = userName => ({
@@ -20,6 +21,10 @@ export const inputPassword = password => ({
 
 export const loginIn = () => ({
     type: SUCCESS_LOGIN,
+})
+
+export const getTreeData = () => ({
+    type: RECEIVE_TREEDATA,
 })
 
 export const onSelectFabricItem = fabricItem => ({

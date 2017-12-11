@@ -10,6 +10,7 @@ import {
     EXPAND_ALL,
     COLLAPSE_ALL,
     SELECT_FABRICITEM,
+    RECEIVE_TREEDATA,
 } from '../../actionTypes'
 
 export const userName = (state = '', action) => {
@@ -398,7 +399,7 @@ const searchNode = (node, name) => {
     return null
 }
 
-export const treeData = (state = initTreeData, action) => {
+export const treeData = (state = {}, action) => {
     let i = 0;
 
     switch (action.type) {
@@ -419,11 +420,13 @@ export const treeData = (state = initTreeData, action) => {
             return state;
             break;
 
-        case SUCCESS_LOGIN:
+        case RECEIVE_TREEDATA:
+            genTreeData(initTreeData, 0);
+
+            return initTreeData;
             break;
 
         default:
-            genTreeData(state, 0);
             return state;
     }
 }

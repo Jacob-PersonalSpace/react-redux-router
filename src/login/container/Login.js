@@ -13,6 +13,7 @@ import {
     expandAll,
     collapseAll,
     expandOrCollapseNode,
+    getTreeData,
 } from '../action';
 
 const Login = ({ state, actions }) => {
@@ -33,6 +34,7 @@ const Login = ({ state, actions }) => {
             expandAll: actions.expandAll,
             collapseAll: actions.collapseAll,
             expandOrCollapseNode: actions.expandOrCollapseNode,
+            getTreeData: actions.getTreeData,
         }}
     />)
 }
@@ -57,6 +59,7 @@ const mapDispatchToProps = dispatch => ({
         expandAll,
         collapseAll,
         expandOrCollapseNode,
+        getTreeData,
     }, dispatch)
 })
 

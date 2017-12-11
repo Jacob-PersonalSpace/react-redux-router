@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import _ from 'lodash'
 
-// import '../../css/login/tree.less';
-
 class Tree extends Component {
     constructor(props) {
         super(props);
 
-        this.genTreeData = this.genTreeData.bind(this)
         this.renderWholeTreeRecursion = this.renderWholeTreeRecursion.bind(this)
         this.renderLine = this.renderLine.bind(this)
         this.renderNode = this.renderNode.bind(this)
@@ -92,7 +89,7 @@ class Tree extends Component {
         return lines
     }
 
-    renderNode(node, currentDeepth) {
+    renderNode(node, currentDeepth, isLeave) {
         let classNames = ['rowWrapper']
         let nodeClassNames = ['rowContents']
         let space = 44 * (currentDeepth + 1)
@@ -109,12 +106,21 @@ class Tree extends Component {
                 <div style={{ height: '100%' }}>
                     <div>
                         {
-                            !_.isEmpty(node.children) ?
-                                <button className="button" style={{ left: '-22px' }} type="button" onClick={() => this.onChangeNodeExpanded(node)}>{temp}</button> :
+                            !_.isEmpty(node.children) && !isLeave ?
+                                <button
+                                    className="button"
+                                    style={{ left: '-22px' }}
+                                    type="button"
+                                    onClick={() => this.onChangeNodeExpanded(node)}
+                                >
+                                    {
+                                        temp
+                                    }
+                                </button> :
                                 null
                         }
                         {
-                            !_.isEmpty(node.children) && node.expanded ?
+                            !_.isEmpty(node.children) && node.expanded && !isLeave ?
                                 <div className="lineChildren" style={{ width: '44px' }}></div> :
                                 null
                         }
@@ -150,7 +156,7 @@ class Tree extends Component {
         )
     }
 
-    renderTreeRow(node, currentDeepth) {
+    renderTreeRow(node, currentDeepth, isLeave) {
         return (
             <div key={node._id + '__row'} className="node" style={{ height: '62px', left: '0px', top: '0px', width: '100%' }}>
                 {
@@ -158,17 +164,15 @@ class Tree extends Component {
                 }
                 {
 
-                    this.renderNode(node, currentDeepth)
+                    this.renderNode(node, currentDeepth, isLeave)
                 }
-                {/* <div onClick={() => this.onChangeNodeExpanded(d)} key={d._id + '__node'}>{d.name}</div> */}
-
             </div>
         )
     }
 
     renderWholeTreeRecursion(outputTree, node, currentDeepth) {
         outputTree.push(
-            this.renderTreeRow(node, currentDeepth)
+            this.renderTreeRow(node, currentDeepth, false)
         )
 
         let newCurrentDeepth = currentDeepth + 1;
@@ -195,29 +199,16 @@ class Tree extends Component {
     }
 
     renderSubTreeRecursion(outputTree, node, currentDeepth, limitDeepth) {
-        outputTree.push(
-            this.renderTreeRow(node, currentDeepth)
-        )
-
         let newCurrentDeepth = currentDeepth + 1;
+
+        outputTree.push(
+            this.renderTreeRow(node, currentDeepth, newCurrentDeepth === limitDeepth)
+        )
 
         if (newCurrentDeepth < limitDeepth && !_.isEmpty(node.children) && node.expanded) {
             node.children.forEach(child => this.renderSubTreeRecursion(outputTree, child, newCurrentDeepth, limitDeepth))
         } else {
             return null;
-        }
-    }
-
-    genTreeData = (d, i) => {
-        d.deep = i++;
-        d.expanded = true;
-
-        if (!_.isEmpty(d.children)) {
-            d.children.forEach(child => {
-                child.parent = d;
-
-                this.genTreeData(child, i)
-            })
         }
     }
 
