@@ -9,7 +9,11 @@ import rootReducer from './reducer';
 
 export const history = createBrowserHistory();
 
-const logger = createLogger()
+const logger = createLogger({
+    stateTransformer(state) {
+        return state.toJS()
+    }
+})
 
 const initialState = Map()
 const enhancers = []

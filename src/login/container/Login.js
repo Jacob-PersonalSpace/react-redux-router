@@ -7,6 +7,7 @@ import LoginContainer from '../component/LoginContainer.jsx';
 import {
     inputUserName,
     inputPassword,
+    loginIn,
 } from '../action';
 
 const Login = ({ state, actions }) => (
@@ -14,18 +15,21 @@ const Login = ({ state, actions }) => (
         state={{
             userName: state.userName,
             passWord: state.passWord,
+            loginErrorMessage: state.loginErrorMessage,
         }}
         actions={{
             inputUserName: actions.inputUserName,
             inputPassword: actions.inputPassword,
+            loginIn: actions.loginIn,
         }}
     />
 )
 
 const mapStateToProps = state => ({
     state: {
-        userName: state.userName,
-        passWord: state.passWord,
+        userName: state.get('userName'),
+        passWord: state.get('passWord'),
+        loginErrorMessage: state.get('loginErrorMessage'),
     }
 })
 
@@ -33,6 +37,7 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         inputUserName,
         inputPassword,
+        loginIn,
     }, dispatch)
 })
 

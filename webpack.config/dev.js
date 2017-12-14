@@ -17,7 +17,7 @@ module.exports = merge(baseConfig, {
         historyApiFallback: true,
         inline: true,
         compress: true,
-        port: 8088,
+        port: 1111,
         progress: true,
     },
     plugins: [
