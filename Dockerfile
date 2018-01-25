@@ -30,6 +30,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # step 10. 把上面项目打包的dist里面的静态文件复制到nginx里面的/usr/share/nginx/htm
 COPY --from=webpackNode usr/src/app/dist /usr/share/nginx/html
 
+# step 11
 EXPOSE 80
 
+# step 12: 当容器启动时，关闭后台守护 
 ENTRYPOINT nginx -g "daemon off;"
