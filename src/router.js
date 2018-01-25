@@ -1,17 +1,20 @@
 import React from 'react';
-import { Route, Link, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import {
+    HashRouter as Router,
+    Route, Link, Switch, BrowserRouter, Redirect
+} from 'react-router-dom';
 
 import Login from './login/container/Login';
 import Regist from './regist/container/Regist';
 
-const Router = () => (
-    <div>
-        <main>
+const Routers = () => (
+    <Router>
+        <div>
             <Route exact path="/" render={() => <Redirect to="/login" />} />
             <Route path="/login" component={Login} />
             <Route path="/regist" component={Regist} />
-        </main>
-    </div>
+        </div>
+    </Router>
 )
 
-export default Router;
+export default Routers;

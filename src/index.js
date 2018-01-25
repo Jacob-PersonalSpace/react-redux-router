@@ -9,11 +9,7 @@ const target = document.querySelector('#root')
 
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <div>
-                <Router />
-            </div>
-        </ConnectedRouter>
+        <Router />
     </Provider>,
     target
 )
