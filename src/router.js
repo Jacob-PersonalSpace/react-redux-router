@@ -25,7 +25,7 @@ import {
 } from 'react-router-dom'
 
 import Login from './login/container/Login'
-// import Regist from './regist/container/Regist'
+import Regist from './regist/container/Regist'
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -33,7 +33,7 @@ const Root = ({ store }) => (
             <div>
                 <Route exact path="/" component={Login} />
                 <Route path="/login" component={Login} />
-                {/* <Route path="/regist" component={Regist} /> */}
+                <Route path="/regist" component={Regist} />
             </div>
         </Router>
     </Provider>

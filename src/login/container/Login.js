@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { push } from 'react-router-redux';
+import { withRouter } from 'react-router-dom';
 
 import LoginContainer from '../component/LoginContainer.jsx';
 
@@ -10,20 +10,34 @@ import {
     inputPassword,
 } from '../action';
 
-const Login = ({ state, actions }) => {
-    return (
-        <LoginContainer
-            state={{
-                userName: state.userName,
-                passWord: state.passWord,
-            }}
-            actions={{
-                inputUserName: actions.inputUserName,
-                inputPassword: actions.inputPassword,
-                // dumpToRegist: actions.dumpToRegist,
-            }}
-        />
-    )
+class Login extends Component {
+    constructor(props) {
+        super(props)
+
+        this.dumpToRegist = this.dumpToRegist.bind(this)
+    }
+
+    dumpToRegist() {
+        this.props.history.push('/regist')
+    }
+
+    render() {
+        const { state, actions } = this.props
+
+        return (
+            <LoginContainer
+                state={{
+                    userName: state.userName,
+                    passWord: state.passWord,
+                }}
+                actions={{
+                    inputUserName: actions.inputUserName,
+                    inputPassword: actions.inputPassword,
+                    dumpToRegist: this.dumpToRegist,
+                }}
+            />
+        )
+    }
 }
 
 const mapStateToProps = state => ({
@@ -37,11 +51,10 @@ const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         inputUserName,
         inputPassword,
-        // dumpToRegist: () => push('/regist'),
     }, dispatch)
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Login);
+)(Login));
