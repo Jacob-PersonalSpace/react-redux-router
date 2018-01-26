@@ -15,7 +15,7 @@ class Regist extends Component {
     }
 
     dumpToLogin() {
-        this.props.history.push('/login')
+        this.props.history.goBack()
     }
 
     render() {
@@ -40,21 +40,17 @@ class Regist extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    state: {
-        newUserName: state.newUserName,
-        newPassword: state.newPassword,
-        confirmPassword: state.confirmPassword,
+const mapStateToProps = state => {
+    return {
+        state: state.regist,
     }
-})
+}
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({
-        ...actions,
-    }, dispatch)
+    actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Regist);
+)(Regist));

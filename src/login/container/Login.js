@@ -5,10 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import LoginContainer from '../component/LoginContainer.jsx';
 
-import {
-    inputUserName,
-    inputPassword,
-} from '../action';
+import * as loginActions from '../action';
 
 class Login extends Component {
     constructor(props) {
@@ -40,18 +37,14 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    state: {
-        userName: state.userName,
-        passWord: state.passWord,
+const mapStateToProps = state => {
+    return {
+        state: state.login,
     }
-})
+}
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({
-        inputUserName,
-        inputPassword,
-    }, dispatch)
+    actions: bindActionCreators(loginActions, dispatch)
 })
 
 export default withRouter(connect(

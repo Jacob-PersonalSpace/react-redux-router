@@ -2,7 +2,7 @@
 FROM node:boron as webpackNode
 
 # step 2. 安装yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.0.0
 RUN $HOME/.yarn/bin/yarn install
 
 # step 3. 新增目录
