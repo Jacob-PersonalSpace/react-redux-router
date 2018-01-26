@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
-import rootReducer from './reducer';
+import rootReducer from './reducer'
 
 const logger = createLogger()
 
@@ -14,10 +14,10 @@ const middleWare = [
 ]
 
 if (process.env.NODE_ENV === 'development') {
-    const devToolsExtension = window.devToolsExtension;
+    const devToolsExtension = window.devToolsExtension
 
     if (typeof devToolsExtension === 'function') {
-        enhancers.push(devToolsExtension());
+        enhancers.push(devToolsExtension())
     }
 }
 
@@ -32,4 +32,4 @@ const store = createStore(
     composedEnhancers,
 )
 
-export default store;
+export default store

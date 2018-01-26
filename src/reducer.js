@@ -1,9 +1,15 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import loginInfo from './login/reducer';
-import registInfo from './regist/reducer';
+import pageHeader from './global/pageHeader/reducers'
+import development from './development/reducers'
+import shoppingCart from './shoppingCart/reducers'
+import joAssign from './joAssign/reducers'
+import masterData from './global/reducers/masterData'
 
 export default combineReducers({
-    login: loginInfo,
-    regist: registInfo,
+    pageHeader,
+    development,
+    shoppingCart,
+    joAssign,
+    masterData,
 })

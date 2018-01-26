@@ -1,2 +1,2 @@
-export * from './login'
-export * from './regist'
+export const RECEIVE_FINISHING_LIST = 'RECEIVE_FINISHING_LIST'
+export const RECEIVE_WASHTYPE_LIST = 'RECEIVE_WASHTYPE_LIST'
