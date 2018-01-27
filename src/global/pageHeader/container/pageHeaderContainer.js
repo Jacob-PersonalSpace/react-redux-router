@@ -17,6 +17,7 @@ class PageHeaderContainer extends Component {
         return (
             <PageHeader
                 state={{
+                    ...state,
                 }}
                 actions={{
                 }}
@@ -26,6 +27,8 @@ class PageHeaderContainer extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log('pageHeader state: ', JSON.stringify(state.pageHeader))
+
     return {
         state: state.pageHeader,
     }

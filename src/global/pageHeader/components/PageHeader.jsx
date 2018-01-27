@@ -32,7 +32,7 @@ class PageHeader extends Component {
 
         return (
             <div>
-                <span>Page Header</span>
+                <span>Page Header: {state.pageHeaderState}</span>
             </div>
         )
     }

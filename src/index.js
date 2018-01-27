@@ -1,30 +1,27 @@
-// import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { ConnectedRouter } from 'react-router-redux';
-// import store, { history } from './store';
-// import Router from './router';
-
-// const target = document.querySelector('#root')
-
-// ReactDOM.render(
-//     <Provider store={store}>
-//         <ConnectedRouter history={history}>
-//             <div>
-//                 <Router />
-//             </div>
-//         </ConnectedRouter>
-//     </Provider>,
-//     target
-// )
-
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { AppContainer, hot } from 'react-hot-loader'
 
-import Root from './root'
+import Routes from './routes'
 import store from './store'
 
-render(
-    <Root store={store} />,
-    document.getElementById('root')
-)
+const renderApp = Component => {
+    render(
+        <AppContainer>
+            <Provider store={store}>
+                <Component />
+            </Provider>
+        </AppContainer>,
+        document.getElementById('root')
+    )
+}
+
+renderApp(Routes)
+
+// Webpack Hot Module Replacement API
+if (module.hot) {
+    module.hot.accept('./routes/index', () => {
+        renderApp(Routes)
+    })
+}

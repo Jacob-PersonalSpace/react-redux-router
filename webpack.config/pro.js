@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const baseConfig = require('./base')
 const root = path.resolve(__dirname, '../')
 
@@ -11,11 +12,8 @@ module.exports = merge(baseConfig, {
                 NODE_ENV: '"production"',
             },
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            sourceMap: false
+        new UglifyJSPlugin({
+            sourceMap: false,
         }),
     ],
 })

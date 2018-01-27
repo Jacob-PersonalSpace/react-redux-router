@@ -7,10 +7,14 @@ const root = path.resolve(__dirname, '../')
 
 module.exports = merge(baseConfig, {
     entry: [
-        'webpack/hot/dev-server',
-        path.join(root, 'src/index.js')
+        'babel-polyfill',
+        'react-hot-loader/patch',
+        path.join(root, 'src/index.js'),
     ],
-    devtool: '#source-map',
+    output: {
+        filename: '[name].[hash].js'
+    },
+    devtool: 'inline-source-map',
     devServer: {
         contentBase: path.join(root, '../dist'),
         historyApiFallback: true,
@@ -18,6 +22,7 @@ module.exports = merge(baseConfig, {
         compress: true,
         port: 8088,
         progress: true,
+        hot: true,
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -25,6 +30,7 @@ module.exports = merge(baseConfig, {
                 NODE_ENV: '"development"',
             },
         }),
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ],
 })
