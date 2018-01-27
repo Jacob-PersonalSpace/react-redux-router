@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom'
 
 import ShoppingCartEntrance from '../../global/components/ShoppingCartEntrance.jsx'
-import Collaboration from '../nestedRoutes/collaboration/components/Collaboration.jsx'
-import Query from '../nestedRoutes/query/components/Query.jsx'
-import FabricItem from '../nestedRoutes/fabricItem/components/FabricItem.jsx'
+import Collaboration from '../../global/collaboration/components/Collaboration.jsx'
+import Query from '../../global/query/components/Query.jsx'
+import FabricItem from '../../global/fabricItem/components/FabricItem.jsx'
 
 class Development extends Component {
     constructor(props) {

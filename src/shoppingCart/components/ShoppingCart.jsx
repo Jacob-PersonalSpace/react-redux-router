@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route, withRouter } from 'react-router-dom'
 
-import HandLoom from '../nestedRoutes/handLoom/components/HandLoom.jsx'
-import TrialWeave from '../nestedRoutes/trialWeave/components/TrialWeave.jsx'
-import FCR from '../nestedRoutes/FCR/components/FCR.jsx'
+import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
+import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
+import FCR from '../../global/FCR/components/FCR.jsx'
 
 class ShoppingCart extends Component {
     constructor(props) {

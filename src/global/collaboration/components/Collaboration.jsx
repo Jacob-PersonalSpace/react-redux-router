@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import LeftContent from '../../../../global/components/LeftContent.jsx'
-import RightContent from '../../../../global/components/RightContent.jsx'
+import LeftContent from '../../components/LeftContent.jsx'
+import RightContent from '../../components/RightContent.jsx'
 
 class Collaboration extends Component {
     constructor(props) {

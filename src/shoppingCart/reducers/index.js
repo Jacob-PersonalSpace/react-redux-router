@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
-import handLoomState from '../nestedRoutes/handLoom/reducers'
-import trialWeaveState from '../nestedRoutes/trialWeave/reducers'
-import fcrState from '../nestedRoutes/FCR/reducers'
+import handLoomState from '../../global/handLoom/reducers'
+import trialWeaveState from '../../global/trialWeave/reducers'
+import fcrState from '../../global/FCR/reducers'
 
 const initShoppingCartState = []
 

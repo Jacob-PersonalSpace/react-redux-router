@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
-import collaborationState from '../nestedRoutes/collaboration/reducers'
-import queryState from '../nestedRoutes/query/reducers'
-import fabricItemState from '../nestedRoutes/fabricItem/reducers'
+import collaborationState from '../../global/collaboration/reducers'
+import queryState from '../../global/query/reducers'
+import fabricItemState from '../../global/fabricItem/reducers'
 
 const initDevelopmentState = 'Here is development component'
 
