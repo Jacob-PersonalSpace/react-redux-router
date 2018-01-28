@@ -11,7 +11,7 @@ class DevelopmentContainer extends Component {
     constructor(props) {
         super(props)
     }
-    
+
     componentDidMount() {
         console.log('DevelopmentContainer componentDidMount')
     }
@@ -35,11 +35,11 @@ class DevelopmentContainer extends Component {
     render() {
         const { state, actions } = this.props
 
+        console.debug('development container state: ', state.toJS())
+
         return (
             <Development
-                state={{
-                    ...state,
-                }}
+                state={state}
                 actions={{
                 }}
             />
@@ -48,9 +48,10 @@ class DevelopmentContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('development state: ', JSON.stringify(state.development))
+    console.debug('whole state tree: ', state.toJS())
+
     return {
-        state: state.development,
+        state: state.get('development'),
     }
 }
 

@@ -37,21 +37,17 @@ class FCR extends PureComponent {
 
     render() {
         const { state, actions, match, history } = this.props
-        const { fcrNewState, fcrRejectState } = state
-        console.log('fcr state: ', JSON.stringify(state))
+
+        console.debug('fcr component state: ', state.toJS())
 
         return (
             <div>
                 <div className="fcr">{state.fcrState}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.shoppingCartFCRLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.shoppingCartFCRRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 >
                     <button onClick={() => history.push(`${match.url}/new`)}>NEW</button>
                     <button onClick={() => history.push(`${match.url}/reject`)}>REJECT</button>
@@ -59,14 +55,10 @@ class FCR extends PureComponent {
                     <Switch>
                         <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/new`} />} />
                         <Route path={`${match.url}/new`} render={() => <FCRNew
-                            state={{
-                                ...fcrNewState,
-                            }}
+                            state={state.get('fcrNewState')}
                         />} />
                         <Route path={`${match.url}/reject`} render={() => <FCRReject
-                            state={{
-                                ...fcrRejectState,
-                            }}
+                            state={state.get('fcrRejectState')}
                         />} />
                         <Redirect to={`${match.url}/new`} />
                     </Switch>

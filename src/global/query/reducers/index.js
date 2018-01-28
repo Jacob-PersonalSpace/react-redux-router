@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initQueryState = 'Here is development-query component'
 
@@ -29,6 +29,10 @@ export const developmentQueryRightContentState = (state = initDevelopmentQueryRi
 
 export default combineReducers({
     queryState,
-    developmentQueryLeftContentState,
-    developmentQueryRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: developmentQueryLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: developmentQueryRightContentState,
+    }),
 })

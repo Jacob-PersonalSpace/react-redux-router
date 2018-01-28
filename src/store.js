@@ -1,12 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
+import { fromJS } from 'immutable'
 
 import rootReducer from './reducer'
 
-const logger = createLogger()
+const logger = createLogger({
+    stateTransformer(state) {
+        return state.toJS()
+    }
+})
 
-const initialState = {}
+const initialState = fromJS({})
 const enhancers = []
 const middleWare = [
     thunk,

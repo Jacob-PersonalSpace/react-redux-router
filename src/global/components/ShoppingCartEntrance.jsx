@@ -46,8 +46,7 @@ class ShoppingCartEntrance extends Component {
     }
 
     render() {
-        const { state, actions, match, history } = this.props
-        console.log('ShoppingCartEntrance state: ', JSON.stringify(state), match, history)
+        const { state, actions } = this.props
 
         return (
             <div>

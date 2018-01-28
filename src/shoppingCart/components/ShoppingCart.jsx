@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 
+import bindFunctions from '../../util/bind-functions'
+
 import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
 import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
 import FCR from '../../global/FCR/components/FCR.jsx'
@@ -12,7 +14,7 @@ class ShoppingCart extends Component {
     constructor(props) {
         super(props)
 
-        this.backToDevelopment = this.backToDevelopment.bind(this)
+        bindFunctions.call(this, ['backToDevelopment'])
     }
 
     componentDidMount() {
@@ -41,8 +43,8 @@ class ShoppingCart extends Component {
 
     render() {
         const { state, actions, match, history } = this.props
-        const { handLoomState, trialWeaveState, fcrState } = state
-        console.log('shoppingcart state: ', JSON.stringify(state))
+
+        console.debug('shoppingcart component state: ', state.toJS())
 
         return (
             <div>
@@ -55,19 +57,13 @@ class ShoppingCart extends Component {
                 <Switch>
                     <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/handloom`} />} />
                     <Route path={`${match.url}/handloom`} render={() => <HandLoom
-                        state={{
-                            ...handLoomState,
-                        }}
+                        state={state.get('handLoomState')}
                     />} />
                     <Route path={`${match.url}/trialweave`} render={() => <TrialWeave
-                        state={{
-                            ...trialWeaveState,
-                        }}
+                        state={state.get('trialWeaveState')}
                     />} />
                     <Route path={`${match.url}/fcr`} render={() => <FCR
-                        state={{
-                            ...fcrState,
-                        }}
+                        state={state.get('fcrState')}
                     />} />
                     <Redirect to={`${match.url}/handloom`} />
                 </Switch>

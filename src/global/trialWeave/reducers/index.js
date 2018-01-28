@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initTrialWeaveState = 'Here is shoppingCart-trialWeave component'
 
@@ -29,6 +29,10 @@ export const shoppingCartTrialWeaveRightContentState = (state = initShoppingCart
 
 export default combineReducers({
     trialWeaveState,
-    shoppingCartTrialWeaveLeftContentState,
-    shoppingCartTrialWeaveRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: shoppingCartTrialWeaveLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: shoppingCartTrialWeaveRightContentState,
+    }),
 })

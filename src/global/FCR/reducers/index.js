@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 import fcrNewState from '../../FCRNew/reducers'
 import fcrRejectState from '../../FCRReject/reducers'
@@ -32,8 +32,12 @@ export const shoppingCartFCRRightContentState = (state = initShoppingCartFCRRigh
 
 export default combineReducers({
     fcrState,
-    shoppingCartFCRLeftContentState,
-    shoppingCartFCRRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: shoppingCartFCRLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: shoppingCartFCRRightContentState,
+    }),
     fcrNewState,
     fcrRejectState,
 })

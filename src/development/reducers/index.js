@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 import collaborationState from '../../global/collaboration/reducers'
 import queryState from '../../global/query/reducers'

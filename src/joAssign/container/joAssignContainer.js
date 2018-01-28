@@ -15,11 +15,11 @@ class joAssignContainer extends Component {
     render() {
         const { state, actions } = this.props
 
+        console.debug('joAssign container state: ', state.toJS())
+
         return (
             <JoAssign
-                state={{
-                    ...state,
-                }}
+                state={state}
                 actions={{
                 }}
             />
@@ -28,10 +28,10 @@ class joAssignContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('joAssign state: ', JSON.stringify(state.joAssign))
+    console.debug('whole state tree: ', state.toJS())
 
     return {
-        state: state.joAssign,
+        state: state.get('joAssign'),
     }
 }
 

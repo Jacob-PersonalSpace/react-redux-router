@@ -33,20 +33,17 @@ class Query extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('query state: ', JSON.stringify(state))
+
+        console.debug('query component state: ', state.toJS())
 
         return (
             <div>
-                <div className="query">{state.queryState}</div>
+                <div className="query">{state.get('queryState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.developmentQueryLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.developmentQueryRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )

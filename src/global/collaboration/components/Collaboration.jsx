@@ -33,20 +33,17 @@ class Collaboration extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('collaboration state: ', JSON.stringify(state))
+
+        console.debug('collaboration component state: ', state.toJS())
 
         return (
             <div>
-                <div className="collaboration">{state.collaborationState}</div>
+                <div className="collaboration">{state.get('collaborationState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.developmentCollaborationLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.developmentCollaborationRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )

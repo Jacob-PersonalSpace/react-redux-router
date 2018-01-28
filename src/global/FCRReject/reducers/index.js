@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initFCRRejectState = 'Here is shoppingCart-fcr-reject component'
 

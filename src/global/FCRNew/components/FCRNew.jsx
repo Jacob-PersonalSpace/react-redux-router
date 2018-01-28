@@ -30,11 +30,12 @@ class FCRNew extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('FCRNew state: ', JSON.stringify(state))
+
+        console.debug('fcrnew component state: ', state.toJS())
 
         return (
             <div>
-                <div className="fcrnew">{state.fcrNewState}</div>
+                <div className="fcrnew">{state.get('fcrNewState')}</div>
             </div>
         )
     }

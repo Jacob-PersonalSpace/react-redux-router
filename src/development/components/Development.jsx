@@ -36,8 +36,8 @@ class Development extends Component {
 
     render() {
         const { state, actions, match, history } = this.props
-        const { collaborationState, queryState, fabricItemState } = state
-        console.log('development state: ', JSON.stringify(state))
+
+        console.debug('development component state: ', state.toJS())
 
         return (
             <div>
@@ -49,19 +49,13 @@ class Development extends Component {
                 <Switch>
                     <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/fabricitem`} />} />
                     <Route path={`${match.url}/collaboration`} render={() => <Collaboration
-                        state={{
-                            ...collaborationState,
-                        }}
+                        state={state.get('collaborationState')}
                     />} />
                     <Route path={`${match.url}/query`} render={() => <Query
-                        state={{
-                            ...queryState,
-                        }}
+                        state={state.get('queryState')}
                     />} />
                     <Route path={`${match.url}/fabricitem`} render={() => <FabricItem
-                        state={{
-                            ...fabricItemState,
-                        }}
+                        state={state.get('fabricItemState')}
                     />} />
                     <Redirect to={`${match.url}/fabricitem`} />
                 </Switch>

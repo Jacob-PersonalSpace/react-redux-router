@@ -33,20 +33,17 @@ class HandLoom extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('handloom state: ', JSON.stringify(state))
+
+        console.debug('handloom component state: ', state.toJS())
 
         return (
             <div>
-                <div className="handloom">{state.handLoomState}</div>
+                <div className="handloom">{state.get('handLoomState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.shoppingCartHandLoomLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.shoppingCartHandLoomRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )

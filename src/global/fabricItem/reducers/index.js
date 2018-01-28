@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initFabricItemState = 'Here is development-fabricItem component'
 
@@ -29,6 +29,10 @@ export const developmentFabricItemRightContentState = (state = initDevelopmentFa
 
 export default combineReducers({
     fabricItemState,
-    developmentFabricItemLeftContentState,
-    developmentFabricItemRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: developmentFabricItemLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: developmentFabricItemRightContentState,
+    }),
 })

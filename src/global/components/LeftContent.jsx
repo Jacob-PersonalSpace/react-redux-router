@@ -30,11 +30,12 @@ class LeftContent extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('left content state: ', JSON.stringify(state))
+
+        console.debug('leftcontent component state: ', state.toJS())
 
         return (
             <div>
-                <span className="leftcontent">{state.leftContentState}</span>
+                <span className="leftcontent">{state.get('leftContentLabel')}</span>
             </div>
         )
     }

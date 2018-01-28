@@ -33,20 +33,17 @@ class TrialWeave extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('trialweave state: ', JSON.stringify(state))
+
+        console.debug('trialweave component state: ', state.toJS())
 
         return (
             <div>
-                <div className="trialweave">{state.trialWeaveState}</div>
+                <div className="trialweave">{state.get('trialWeaveState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.shoppingCartTrialWeaveLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.shoppingCartTrialWeaveRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initHandLoomState = 'Here is shoppingCart-handloom component'
 
@@ -29,6 +29,10 @@ export const shoppingCartHandLoomRightContentState = (state = initShoppingCartHa
 
 export default combineReducers({
     handLoomState,
-    shoppingCartHandLoomLeftContentState,
-    shoppingCartHandLoomRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: shoppingCartHandLoomLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: shoppingCartHandLoomRightContentState,
+    }),
 })

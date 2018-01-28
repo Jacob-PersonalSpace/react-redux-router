@@ -38,11 +38,12 @@ class FCRReject extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('FCRReject state: ', JSON.stringify(state))
+
+        console.debug('fcrreject component state: ', state.toJS())
 
         return (
             <div>
-                <div className="fcrreject">{state.fcrRejectState}</div>
+                <div className="fcrreject">{state.get('fcrRejectState')}</div>
             </div>
         )
     }

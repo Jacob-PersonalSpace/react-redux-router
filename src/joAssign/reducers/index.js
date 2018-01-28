@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initJoAssignState = 'Here is JoAssign component'
 
@@ -29,6 +29,10 @@ export const joAssignRightContentState = (state = initJoAssignRightContentState,
 
 export default combineReducers({
     joAssignState,
-    joAssignLeftContentState,
-    joAssignRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: joAssignLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: joAssignRightContentState,
+    }),
 })

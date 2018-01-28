@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 import pageHeader from './global/pageHeader/reducers'
 import development from './development/reducers'

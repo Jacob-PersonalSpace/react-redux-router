@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 
 const initCollaborationState = 'Here is development-collaboration component'
 
@@ -29,6 +29,10 @@ export const developmentCollaborationRightContentState = (state = initDevelopmen
 
 export default combineReducers({
     collaborationState,
-    developmentCollaborationLeftContentState,
-    developmentCollaborationRightContentState,
+    leftContentState: combineReducers({
+        leftContentLabel: developmentCollaborationLeftContentState,
+    }),
+    rightContentState: combineReducers({
+        rightContentLabel: developmentCollaborationRightContentState,
+    }),
 })

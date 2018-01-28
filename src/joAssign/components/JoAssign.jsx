@@ -33,20 +33,17 @@ class JoAssign extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('joassign state: ', JSON.stringify(state))
+
+        console.debug('joAssign component state: ', state.toJS())
 
         return (
             <div>
-                <div className="joassign">{state.joAssignState}</div>
+                <div className="joassign">{state.get('joAssignState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.joAssignLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.joAssignRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )

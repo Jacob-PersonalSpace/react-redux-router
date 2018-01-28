@@ -15,11 +15,11 @@ class ShoppingCartContainer extends Component {
     render() {
         const { state, actions } = this.props
 
+        console.debug('shoppingcart container state: ', state.toJS())
+
         return (
             <ShoppingCart
-                state={{
-                    ...state,
-                }}
+                state={state}
                 actions={{
                 }}
             />
@@ -28,10 +28,10 @@ class ShoppingCartContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('development state: ', JSON.stringify(state.shoppingCart))
+    console.debug('whole state tree: ', state.toJS())
 
     return {
-        state: state.shoppingCart,
+        state: state.get('shoppingCart'),
     }
 }
 

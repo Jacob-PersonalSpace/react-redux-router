@@ -33,20 +33,17 @@ class FabricItem extends Component {
 
     render() {
         const { state, actions } = this.props
-        console.log('fabricitem state: ', JSON.stringify(state))
+
+        console.debug('fabricitem component state: ', state.toJS())
 
         return (
             <div>
-                <div className="fabricitem">{state.fabricItemState}</div>
+                <div className="fabricitem">{state.get('fabricItemState')}</div>
                 <LeftContent
-                    state={{
-                        leftContentState: state.developmentFabricItemLeftContentState,
-                    }}
+                    state={state.get('leftContentState')}
                 />
                 <RightContent
-                    state={{
-                        rightContentState: state.developmentFabricItemRightContentState,
-                    }}
+                    state={state.get('rightContentState')}
                 />
             </div>
         )
