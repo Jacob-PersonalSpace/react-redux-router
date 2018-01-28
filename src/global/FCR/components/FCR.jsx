@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 
+import PureComponent from '../../components/PureComponent.jsx'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 import FCRNew from '../../FCRNew/components/FCRNew.jsx'
@@ -9,7 +10,7 @@ import FCRReject from '../../FCRReject/components/FCRReject.jsx'
 
 import '../css/fcr.less'
 
-class FCR extends Component {
+class FCR extends PureComponent {
     constructor(props) {
         super(props)
     }

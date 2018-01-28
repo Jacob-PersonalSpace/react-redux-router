@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+import bindFunctions from '../../../util/bind-functions'
+
 import '../css/fcrReject.less'
 
 class FCRReject extends Component {
     constructor(props) {
         super(props)
+
+        bindFunctions.call(this, ['onClickFunction'])
+    }
+
+    onClickFunction() {
+        console.log('auto bind onClickFucntion to this')
     }
 
     componentDidMount() {
