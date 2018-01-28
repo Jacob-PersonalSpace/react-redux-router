@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 
+import '../css/trialWeave.less'
+
 class TrialWeave extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class TrialWeave extends Component {
 
         return (
             <div>
-                <div>{state.trialWeaveState}</div>
+                <div className="trialweave">{state.trialWeaveState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.shoppingCartTrialWeaveLeftContentState,

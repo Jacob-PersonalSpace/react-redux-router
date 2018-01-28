@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux'
 
+import fcrNewState from '../../FCRNew/reducers'
+import fcrRejectState from '../../FCRReject/reducers'
+
 const initFcrState = 'Here is shoppingCart-fcr component'
 
 export const fcrState = (state = initFcrState, action) => {
@@ -31,4 +34,6 @@ export default combineReducers({
     fcrState,
     shoppingCartFCRLeftContentState,
     shoppingCartFCRRightContentState,
+    fcrNewState,
+    fcrRejectState,
 })

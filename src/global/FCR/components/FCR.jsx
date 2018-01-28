@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
+import FCRNew from '../../FCRNew/components/FCRNew.jsx'
+import FCRReject from '../../FCRReject/components/FCRReject.jsx'
+
+import '../css/fcr.less'
 
 class FCR extends Component {
     constructor(props) {
@@ -30,12 +35,13 @@ class FCR extends Component {
     }
 
     render() {
-        const { state, actions } = this.props
+        const { state, actions, match, history } = this.props
+        const { fcrNewState, fcrRejectState } = state
         console.log('fcr state: ', JSON.stringify(state))
 
         return (
             <div>
-                <div>{state.fcrState}</div>
+                <div className="fcr">{state.fcrState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.shoppingCartFCRLeftContentState,
@@ -45,10 +51,28 @@ class FCR extends Component {
                     state={{
                         rightContentState: state.shoppingCartFCRRightContentState,
                     }}
-                />
+                >
+                    <button onClick={() => history.push(`${match.url}/new`)}>NEW</button>
+                    <button onClick={() => history.push(`${match.url}/reject`)}>REJECT</button>
+
+                    <Switch>
+                        <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/new`} />} />
+                        <Route path={`${match.url}/new`} render={() => <FCRNew
+                            state={{
+                                ...fcrNewState,
+                            }}
+                        />} />
+                        <Route path={`${match.url}/reject`} render={() => <FCRReject
+                            state={{
+                                ...fcrRejectState,
+                            }}
+                        />} />
+                        <Redirect to={`${match.url}/new`} />
+                    </Switch>
+                </RightContent>
             </div>
         )
     }
 }
 
-export default FCR
+export default withRouter(FCR)

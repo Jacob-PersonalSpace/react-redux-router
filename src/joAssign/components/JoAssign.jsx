@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../global/components/LeftContent.jsx'
 import RightContent from '../../global/components/RightContent.jsx'
 
+import '../css/joAssign.less'
+
 class JoAssign extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class JoAssign extends Component {
 
         return (
             <div>
-                <div>{state.joAssignState}</div>
+                <div className="joassign">{state.joAssignState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.joAssignLeftContentState,

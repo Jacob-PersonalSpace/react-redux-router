@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Route } from 'react-router-dom'
+
+import '../css/pageHeader.less'
 
 class PageHeader extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class PageHeader extends Component {
 
         return (
             <div>
-                <span>Page Header: {state.pageHeaderState}</span>
+                <span className="pageheader">Page Header: {state.pageHeaderState}</span>
             </div>
         )
     }

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Route, withRouter } from 'react-router-dom'
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 
 import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
 import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
 import FCR from '../../global/FCR/components/FCR.jsx'
+
+import '../css/shoppingCart.less'
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -44,25 +46,31 @@ class ShoppingCart extends Component {
 
         return (
             <div>
+                <div className="shoppingCart">ShoppingCart Page</div>
                 <button onClick={() => this.backToDevelopment()}>Back To Development</button>
                 <button onClick={() => history.push(`${match.url}/handloom`)}>handloom</button>
                 <button onClick={() => history.push(`${match.url}/trialweave`)}>trialweave</button>
                 <button onClick={() => history.push(`${match.url}/fcr`)}>fcr</button>
-                <Route path={`${match.url}/handloom`} render={() => <HandLoom
-                    state={{
-                        ...handLoomState,
-                    }}
-                />} />
-                <Route path={`${match.url}/trialweave`} render={() => <TrialWeave
-                    state={{
-                        ...trialWeaveState,
-                    }}
-                />}  />
-                <Route path={`${match.url}/fcr`} render={() => <FCR
-                    state={{
-                        ...fcrState,
-                    }}
-                />}   />
+
+                <Switch>
+                    <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/handloom`} />} />
+                    <Route path={`${match.url}/handloom`} render={() => <HandLoom
+                        state={{
+                            ...handLoomState,
+                        }}
+                    />} />
+                    <Route path={`${match.url}/trialweave`} render={() => <TrialWeave
+                        state={{
+                            ...trialWeaveState,
+                        }}
+                    />} />
+                    <Route path={`${match.url}/fcr`} render={() => <FCR
+                        state={{
+                            ...fcrState,
+                        }}
+                    />} />
+                    <Redirect to={`${match.url}/handloom`} />
+                </Switch>
             </div>
         )
     }

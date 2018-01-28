@@ -7,13 +7,15 @@ import Collaboration from '../../global/collaboration/components/Collaboration.j
 import Query from '../../global/query/components/Query.jsx'
 import FabricItem from '../../global/fabricItem/components/FabricItem.jsx'
 
+import '../css/development.less'
+
 class Development extends Component {
     constructor(props) {
         super(props)
     }
 
     componentDidMount() {
-        console.log('Development componentDidMount')
+        console.log('Developmentaaa componentDidMount')
     }
 
     componentWillMount() {
@@ -39,6 +41,7 @@ class Development extends Component {
 
         return (
             <div>
+                <div className="development">Development Page</div>
                 <ShoppingCartEntrance />
                 <button onClick={() => history.push(`${match.url}/collaboration`)}>collaboration</button>
                 <button onClick={() => history.push(`${match.url}/query`)}>query</button>

@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 
+import '../css/fabricItem.less'
+
 class FabricItem extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class FabricItem extends Component {
 
         return (
             <div>
-                <div>{state.fabricItemState}</div>
+                <div className="fabricitem">{state.fabricItemState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.developmentFabricItemLeftContentState,

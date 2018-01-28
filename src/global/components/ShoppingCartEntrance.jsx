@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { withRouter } from 'react-router-dom'
 
+import '../css/shoppingCartEntrance.less'
+
 class ShoppingCartEntrance extends Component {
     constructor(props) {
         super(props)
@@ -49,6 +51,7 @@ class ShoppingCartEntrance extends Component {
 
         return (
             <div>
+                <div className="shoppingcartentrance">Shopping Cart Entrance</div>
                 <button onClick={() => this.goToShoppingCartHandLoom()}>Go To Handloom</button>
                 <button onClick={() => this.goToShoppingCartTrialWeave()}>Go To Trialweave</button>
                 <button onClick={() => this.goToShoppingCartFCR()}>Go To Fcr</button>

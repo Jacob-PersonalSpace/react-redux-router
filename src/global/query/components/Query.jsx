@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 
+import '../css/query.less'
+
 class Query extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class Query extends Component {
 
         return (
             <div>
-                <div>{state.queryState}</div>
+                <div className="query">{state.queryState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.developmentQueryLeftContentState,

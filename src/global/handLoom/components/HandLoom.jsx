@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 
+import '../css/handloom.less'
+
 class HandLoom extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class HandLoom extends Component {
 
         return (
             <div>
-                <div>{state.handLoomState}</div>
+                <div className="handloom">{state.handLoomState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.shoppingCartHandLoomLeftContentState,

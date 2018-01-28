@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+import '../css/rightContent.less'
+
 class RightContent extends Component {
     constructor(props) {
         super(props)
@@ -32,7 +34,10 @@ class RightContent extends Component {
 
         return (
             <div>
-                <span>{state.rightContentState}</span>
+                <span className="rightcontent">{state.rightContentState}</span>
+                {
+                    this.props.children
+                }
             </div>
         )
     }

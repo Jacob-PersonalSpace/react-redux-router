@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
 
+import '../css/collaboration.less'
+
 class Collaboration extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ class Collaboration extends Component {
 
         return (
             <div>
-                <div>{state.collaborationState}</div>
+                <div className="collaboration">{state.collaborationState}</div>
                 <LeftContent
                     state={{
                         leftContentState: state.developmentCollaborationLeftContentState,

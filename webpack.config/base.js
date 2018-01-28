@@ -1,28 +1,18 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
 const root = path.resolve(__dirname, '../')
 
 module.exports = {
     entry: {
         bundle: path.join(root, 'src/index.js'),
-        vendor: [
-            "prop-types",
-            "react",
-            "react-dom",
-            "react-redux",
-            "react-router",
-            "react-router-dom",
-            "redux",
-            "redux-logger",
-            "redux-thunk",
-        ]
     },
     output: {
         path: path.join(root, 'dist'),
         publicPath: '/',
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[chunkhash:8].js'
     },
     module: {
         rules: [
@@ -33,17 +23,20 @@ module.exports = {
             },
             {
                 test: /\.(css|less)$/,
-                use: [
-                    {
-                        loader: "style-loader" // creates style nodes from JS strings
-                    },
-                    {
-                        loader: "css-loader" // translates CSS into CommonJS
-                    },
-                    {
-                        loader: "less-loader" // compiles Less to CSS
-                    },
-                ]
+                // use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+                //     fallback: 'style-loader',
+                //     use: [
+                //         "css-loader",
+                //         "less-loader",
+                //     ]
+                // })),
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        "css-loader",
+                        "less-loader",
+                    ]
+                }),
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -60,17 +53,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(
+            ['dist'],
+            { root: path.resolve(__dirname, '..'), verbose: true }
+        ),
         new HtmlWebpackPlugin({
             template: path.join(root, 'index.html'),
             inject: 'body',
         }),
-        new webpack.HashedModuleIdsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest'
-        })
     ],
 }
