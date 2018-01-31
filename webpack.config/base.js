@@ -23,13 +23,6 @@ module.exports = {
             },
             {
                 test: /\.(css|less)$/,
-                // use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-                //     fallback: 'style-loader',
-                //     use: [
-                //         "css-loader",
-                //         "less-loader",
-                //     ]
-                // })),
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [

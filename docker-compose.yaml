@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  lpd-web:
+    build: .
+    ports:
+      - "33886:80"
+    container_name: Esquel_lpd-web-1

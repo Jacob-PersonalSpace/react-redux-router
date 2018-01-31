@@ -9,8 +9,6 @@ import ShoppingCart from '../shoppingCart/container/shoppingCartContainer'
 import JoAssign from '../joAssign/container/joAssignContainer'
 
 const Routes = () => {
-    console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)
-
     return (
         <div>
             <PageHeader />

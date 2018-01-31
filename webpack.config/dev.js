@@ -52,7 +52,7 @@ module.exports = merge.smart(baseConfig, {
         historyApiFallback: true,
         inline: true,
         compress: true,
-        port: 8088,
+        port: 33886,
         progress: true,
         hot: true,
     },
