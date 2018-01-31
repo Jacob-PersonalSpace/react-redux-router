@@ -6,7 +6,7 @@
   "author": "GFG1\\fengjac <fengjac@esquel.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "dev": "webpack-dev-server --open --config webpack.config/dev.js",
     "build": "webpack --config webpack.config/pro.js"
   },
