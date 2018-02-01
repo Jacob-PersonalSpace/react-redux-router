@@ -14,23 +14,22 @@ class PageHeaderContainer extends Component {
     render() {
         const { state, actions } = this.props
 
+        console.debug('pageheader container state: ', state.toJS())
+
         return (
             <PageHeader
-                state={{
-                    ...state,
-                }}
-                actions={{
-                }}
+                state={state}
+                actions={actions}
             />
         )
     }
 }
 
 const mapStateToProps = state => {
-    console.log('pageHeader state: ', JSON.stringify(state.pageHeader))
+    console.debug('whole state tree: ', state.toJS())
 
     return {
-        state: state.pageHeader,
+        state: state.get('pageHeader'),
     }
 }
 

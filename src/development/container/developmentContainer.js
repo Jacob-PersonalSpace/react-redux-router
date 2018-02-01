@@ -7,7 +7,7 @@ import * as developmentActions from '../actions'
 
 import Development from '../components/Development.jsx'
 
-import { searchFabricCodeListPromise } from '../../util/api'
+// import { searchFabricCodeListPromise } from '../../util/api'
 
 class DevelopmentContainer extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class DevelopmentContainer extends Component {
     }
 
     componentDidMount() {
-        searchFabricCodeListPromise()
+        // searchFabricCodeListPromise()
         console.log('DevelopmentContainer componentDidMount')
     }
 

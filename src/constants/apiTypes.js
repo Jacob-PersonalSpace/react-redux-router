@@ -14,6 +14,11 @@ export const GET_FABRIC_PRICE = 'getFabricPrice'
 export const GET_REQUEST_ORDER = 'getRequestOrder'
 
 /**
+ * core
+ */
+export const GET_SYSTEM_MENU = 'getSystemMenu'
+
+/**
  * escm
  */
 export const GET_SHIPMODE = 'getShipMode'

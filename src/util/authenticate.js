@@ -12,3 +12,7 @@ export const authContext = new AuthenticationContext(adalConfig)
 export const getAdalResourceGuiId = (authContext) => {
     return authContext.getResourceForEndpoint(window.location.href)
 }
+
+export const adalLogout = (authContext) => {
+    authContext.logOut()
+}

@@ -3,6 +3,12 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const fs = require("fs")
+
+const version = JSON.parse(fs.readFileSync("version.json"))
+
+const gitRevisionPlugin = new GitRevisionPlugin()
 const baseConfig = require('./base')
 const root = path.resolve(__dirname, '../')
 
@@ -12,6 +18,8 @@ module.exports = merge(baseConfig, {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"',
+                FRONTEND: JSON.stringify(gitRevisionPlugin.version()),
+                VERSION: JSON.stringify(version.version),
             },
         }),
         new UglifyJSPlugin({

@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'pill and pillow';
+    font-style: normal;
+    src: url(../../../static/fonts/pillandpillow/pillandpillow.woff) format('woff'), url(../../../static/fonts/pillandpillow/pillandpillow.ttf) format('truetype'), url(../../../static/fonts/pillandpillow/pillandpillow.svg#pillandpillow) format('svg');
+}
+
+.ppicon {
+    font-family: 'pill and pillow';
+    font-style: normal;
+    line-height: 1;
+    speak: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    &.ppicon-similar:before {
+        content: '\e600';
+    }
+    &.ppicon-search:before {
+        content: '\e601';
+    }
+    &.ppicon-bin:before {
+        content: '\e602';
+    }
+    &.ppicon-arrow-bottom:before {
+        content: '\e603';
+    }
+    &.ppicon-arrow-left:before {
+        content: '\e604';
+    }
+    &.ppicon-arrow-right:before {
+        content: '\e605';
+    }
+    &.ppicon-arrow-top:before {
+        content: '\e606';
+    }
+    &.ppicon-export:before {
+        content: '\e607';
+    }
+    &.ppicon-print:before {
+        content: '\e608';
+    }
+    &.ppicon-view-thumbnail:before {
+        content: '\e609';
+    }
+    &.ppicon-view-favorites:before {
+        content: '\e60a';
+    }
+    &.ppicon-view-large-thumbnail:before {
+        content: '\e60b';
+    }
+    &.ppicon-view-list:before {
+        content: '\e60c';
+    }
+    &.ppicon-view-small-thumbnail:before {
+        content: '\e60d';
+    }
+    &.ppicon-position-mark:before {
+        content: '\e60e';
+    }
+    &.ppicon-add-tool:before {
+        content: '\e60f';
+    }
+    &.ppicon-home:before {
+        content: '\e610';
+    }
+    &.ppicon-tool-color:before {
+        content: '\e611';
+    }
+    &.ppicon-tool-library:before {
+        content: '\e612';
+    }
+    &.ppicon-tool-size:before {
+        content: '\e613';
+    }
+    &.ppicon-tool-block:before {
+        content: '\e614';
+    }
+    &.ppicon-tool-fabric:before {
+        content: '\e615';
+    }
+    &.ppicon-tool-style:before {
+        content: '\e616';
+    }
+    &.ppicon-notification:before {
+        content: '\e617';
+    }
+    &.ppicon-filter:before {
+        content: '\e618';
+    }
+    &.ppicon-error:before {
+        content: '\e619';
+    }
+    &.ppicon-folder-box:before {
+        content: '\e61a';
+    }
+    &.ppicon-folder-close:before {
+        content: '\e61b';
+    }
+    &.ppicon-open:before {
+        content: '\e61c';
+    }
+    &.ppicon-cross:before {
+        content: '\e61d';
+    }
+    &.ppicon-filled-bin:before {
+        content: '\e61e';
+    }
+    &.ppicon-filled-heart:before {
+        content: '\e61f';
+    }
+    &.ppicon-filled-similar:before {
+        content: '\e620';
+    }
+    &.ppicon-tick:before {
+        content: '\e621';
+    }
+    &.ppicon-plus:before {
+        content: '\e622';
+    }
+    &.ppicon-button-delete:before {
+        content: '\e623';
+    }
+    &.ppicon-button-next:before {
+        content: '\e624';
+    }
+    &.ppicon-button-prev:before {
+        content: '\e625';
+    }
+    &.ppicon-arrow-down:before {
+        content: '\e626';
+    }
+    &.ppicon-folder-add:before {
+        content: '\e627';
+    }
+    &.ppicon-alert:before {
+        content: '\e628';
+    }
+    &.ppicon-alert-circle:before {
+        content: '\e629';
+    }
+    &.ppicon-error-circle:before {
+        content: '\e62a';
+    }
+    &.ppicon-icon-button:before {
+        content: '\e900';
+    }
+    &.ppicon-icon-palette:before {
+        content: '\e901';
+    }
+    &.ppicon-tool-export:before {
+        content: '\e607';
+    }
+}
