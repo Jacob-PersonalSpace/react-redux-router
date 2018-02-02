@@ -28,6 +28,7 @@ export const BACKEND_BASEURL_HOST_CONFIG = {
         },
     },
     K8S_DEV: {
+        lpdWeb: 'http://cube.dev.k8s.esquel.cloud',
         core: 'http://designer-workbench-dev.azurewebsites.net',
         wmis: 'http://wmis-api.dev.k8s.esquel.cloud',
         escm: 'http://escm-api.dev.k8s.esquel.cloud',
@@ -39,6 +40,7 @@ export const BACKEND_BASEURL_HOST_CONFIG = {
         neo4j: 'http://lpd-cabala.dev.k8s.esquel.cloud',
     },
     K8S_SIT: {
+        lpdWeb: 'http://cube.sit.k8s.esquel.cloud',
         core: "http://designer-workbench-sit.azurewebsites.net",
         wmis: 'http://wmis-api.sit.k8s.esquel.cloud',
         escm: 'http://escm-api.sit.k8s.esquel.cloud',
@@ -50,6 +52,7 @@ export const BACKEND_BASEURL_HOST_CONFIG = {
         neo4j: 'http://lpd-cabala.sit.k8s.esquel.cloud',
     },
     K8S_UAT: {
+        lpdWeb: 'http://cube.uat.k8s.esquel.cloud',
         core: "http://designer-workbench-uat.azurewebsites.net",
         wmis: 'http://wmis-api.uat.k8s.esquel.cloud',
         escm: 'http://escm-api.uat.k8s.esquel.cloud',
@@ -61,6 +64,7 @@ export const BACKEND_BASEURL_HOST_CONFIG = {
         neo4j: 'http://lpd-cabala.uat.k8s.esquel.cloud',
     },
     K8S_PRD: {
+        lpdWeb: 'http://cube.k8s.esquel.cloud',
         core: "http://designer-workbench.azurewebsites.net",
         wmis: 'http://wmis-api.k8s.esquel.cloud',
         escm: 'http://escm-api.k8s.esquel.cloud',
@@ -76,8 +80,8 @@ export const BACKEND_BASEURL_HOST_CONFIG = {
 export const DEFAULT_HOST = window.location.origin
 
 export const BACKEND_BASEURL_PATH_CONFIG = {
-    static: {
-        getVersion: { url: 'version.json', isNoneAuth: false },
+    lpdWeb: {
+        lpdWeb: { url: '', isNoneAuth: false },
     },
     core: {
         getSystemMenu: { url: 'api/v1/systemmenu', isNoneAuth: false },

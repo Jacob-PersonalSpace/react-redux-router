@@ -14,12 +14,15 @@ class PageHeaderContainer extends Component {
     render() {
         const { state, actions } = this.props
 
+        console.log('????', actions)
+
         console.debug('pageheader container state: ', state.toJS())
 
         return (
             <PageHeader
                 state={state}
-                actions={actions}
+                // actions={actions}
+            actions={{ ...actions.test }}
             />
         )
     }
@@ -35,9 +38,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        actions: bindActionCreators({
-            ...pageHeaderActions,
-        }, dispatch)
+        actions: {
+            test: bindActionCreators({
+                ...pageHeaderActions,
+            }, dispatch)
+        }
     }
 }
 

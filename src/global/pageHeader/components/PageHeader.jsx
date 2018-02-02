@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import $ from 'jquery'
 import { isEmpty } from 'lodash'
+import swal from 'sweetalert'
+import { withRouter } from 'react-router-dom'
 
 import PureComponent from '../../components/PureComponent.jsx'
 
 import { adalLogout } from '../../../util/authenticate'
 import bindFunctions from '../../../util/bind-functions'
 import headerupnib from '../../../../static/img/header-up-nib.png'
+import { intranetUrl } from '.././../../constants/index'
 
 import '../css/pageHeader.less'
 import 'font-awesome/css/font-awesome.min.css'
@@ -42,17 +45,16 @@ class PageHeader extends PureComponent {
             'renderRecentAssortments',
             'renderPlanningMenu',
             'onLogout',
-            'showSytemInfo',
         ])
     }
 
     goHome() {
-        window.location.href = Constant.intranetUrl
+        window.location.href = intranetUrl
     }
 
     goToSite(site) {
         if (site === 'Workbench') {
-            window.location.href = 'index.html'
+            // window.location.href = 'index.html' //TODO: dump to phase 1?
         }
     }
 
@@ -112,56 +114,67 @@ class PageHeader extends PureComponent {
 
     doAction(action) {
         if (action === 'line-plan/create') {
-            window.location.href = 'lineplan.html?_=' + new Date().getTime()
+            console.log('????????????????????????')
+            window.location.replace(window.app.backendUrl.lpdWeb.url + 'lineplan.html?_=' + new Date().getTime())
         }
         else if (action === 'line-plan/history') {
-            alert('This function has not been implemented.')
+            // alert('This function has not been implemented.')
         }
         else if (action.indexOf('line-plan/open/') >= 0) {
             let id = action.split('/')[2]
-            window.location.href = 'lineplan.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id)
+            window.location.replace(window.app.backendUrl.lpdWeb.url + 'lineplan.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id))
         }
         else if (action.indexOf('sourcing/open/') >= 0) {
             let id = action.split('/')[2]
-            window.location.href = 'sourcing.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id)
+            window.location.replace(window.app.backendUrl.lpdWeb.url + 'sourcing.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id))
         }
         else if (action.indexOf('assortment/open/') >= 0) {
             let id = action.split('/')[2]
-            window.location.href = 'assortment.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id)
+            window.location.replace(window.app.backendUrl.lpdWeb.url + 'assortment.html?_=' + new Date().getTime() + '#id=' + encodeURIComponent(id))
         }
         else if (action === 'assortment/history') {
-            alert('This function has not been implemented.')
+            // alert('This function has not been implemented.')
         }
         else if (action.indexOf('buying/open/') >= 0) {
             let id = action.split('/')[2],
                 { actionData } = this.props.state.systemMenu.find(r => r.itemCode === 'BuyPlan').subMenuItem[id]
 
-            window.location.href = 'buying.html?_=' + new Date().getTime() + '#json=' + encodeURIComponent(JSON.stringify(actionData))
+            window.location.replace(window.app.backendUrl.lpdWeb.url + 'buying.html?_=' + new Date().getTime() + '#json=' + encodeURIComponent(JSON.stringify(actionData)))
         }
         else if (action === 'fabric/woven') {
-            if (window.location.pathname.indexOf('development.html') >= 0) {
+            if (window.location.pathname.indexOf('development') >= 0) {
                 return
             }
-
-            window.location.href = 'development.html?_=' + Date.now()
         }
     }
 
     makeAction(action) {
-        let firstPages = ['/', '/index.html', '/sprint9/', '/sprint9/index.html', '/InstantNoodle/Workbench/', '/InstantNoodle/Workbench/index.html']
-        let firstPage = window.location.pathname && (firstPages.includes(window.location.pathname))
-
-        if (firstPage) {
-            this.doAction(action)
-        }
-        else {
-            if (window.location.pathname.indexOf('development.html') >= 0 && action === 'fabric/woven') {
+        if (action === 'fabric/woven') {
+            if (window.location.pathname.indexOf('development') >= 0) {
                 return
             }
-            window.app.flux.Modal.Actions.show('Confirm to discard changes?', 'yesno', (err, confirm) => {
-                confirm && this.doAction(action)
-            })
+            else {
+                this.props.history.push('/development')
+                return
+            }
         }
+
+        swal("Confirm to discard changes?", {
+            buttons: {
+                cancel: "NO",
+                yes: "YES",
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "yes":
+                        this.doAction(action)
+                        break
+
+                    default:
+                        break
+                }
+            })
     }
 
     onOtherClick() {
@@ -464,12 +477,12 @@ class PageHeader extends PureComponent {
     }
 
     onLogout() {
-        Adal.adalLogOut()
+        adalLogout(window.app.authentication.authContext)
     }
 
-    showSytemInfo() {
-        window.open('systemInfo.html')
-    }
+    // showSytemInfo() {
+    //     window.open('systemInfo.html')
+    // }
 
     componentWillMount() {
         this.props.actions.getSystemMenu()
@@ -519,18 +532,18 @@ class PageHeader extends PureComponent {
 
                 </ul>
                 <div className="system-information">
-                    {
-                        false && <img src="../../../../static/img/profile-unknown.jpg" />
-                    }
+                    {/* {
+                        <img src="../../../../static/img/profile-unknown.jpg" />
+                    } */}
 
                     <div className="version">Version: {process.env.VERSION} Build: {process.env.FRONTEND}</div>
 
                     {' '}
 
                     <ul className="site-nav">
-                        <li>
+                        {/* <li>
                             <button onClick={event => this.showSytemInfo(event)}>         </button>
-                        </li>
+                        </li> */}
                         <li>
                             <button onClick={event => this.onLogout(event)}>Logout</button>
                         </li>
@@ -560,4 +573,4 @@ class PageHeader extends PureComponent {
     }
 }
 
-export default PageHeader           
+export default withRouter(PageHeader)           

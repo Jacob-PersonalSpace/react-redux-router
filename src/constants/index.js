@@ -1,3 +1,5 @@
+export const intranetUrl = 'http://intranet.eel1.esquel.com/default.aspx'
+
 export const years = [
     { value: '2017', text: '2017' },
     { value: '2018', text: '2018' },
