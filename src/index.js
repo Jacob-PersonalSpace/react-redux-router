@@ -10,6 +10,11 @@ import store from './store'
 import { authContext, getAdalResourceGuiId, env } from './util/authenticate'
 import { getBackendUrl } from './util/getBackendUrl'
 
+import 'font-awesome/css/font-awesome.min.css'
+import './global/css/pillandpillow.css'
+import './global/css/roboto2015.css'
+import './global/css/robotocondensed2015.css'
+
 const renderApp = Component => {
     render(
         <AppContainer>

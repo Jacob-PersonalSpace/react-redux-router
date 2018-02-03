@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+import PureComponent from '../../components/PureComponent.jsx'
+
 import bindFunctions from '../../../util/bind-functions'
 
 import '../css/fcrReject.less'
 
-class FCRReject extends Component {
+class FCRReject extends PureComponent {
     constructor(props) {
         super(props)
 

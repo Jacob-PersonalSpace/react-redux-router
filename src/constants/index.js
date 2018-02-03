@@ -1,3 +1,5 @@
+import { fromJS } from 'immutable'
+
 export const intranetUrl = 'http://intranet.eel1.esquel.com/default.aspx'
 
 export const years = [
@@ -463,3 +465,96 @@ export const NEWTRIALWEAVE_MANDATORY_FIELD = [
 ]
 
 export const loadTapOptionsDelayTime = 1000
+
+export const INIT_JOASSIGN_FILE_HEADER = fromJS({
+    "header": {
+        "columns": [
+            {
+                "data": "assignCheckBox.value",
+                "type": "checkbox",
+            }, {
+                "data": "_jo.value",
+                "type": "text",
+            }, {
+                "data": "Group.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Item.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Combo.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Pattern Reference.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Dye Method.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Fabrication.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Composition.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Construction.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Fabric Finishing.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Finishing Standard.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Color Reference.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Reference Weaving.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "Handfeel Standard.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "_remark.value",
+                "type": "text",
+                "readOnly": true,
+            }, {
+                "data": "_deliveryDate.value",
+                "type": "text",
+                "readOnly": true,
+            }
+        ],
+        "colHeaders": [
+            "",
+            "JO",
+            "Group",
+            "Item",
+            "Combo",
+            "Pattern Reference",
+            "Dye Method",
+            "Fabrication",
+            "Composition",
+            "Construction",
+            "Fabric Finishing",
+            "Finishing Standard",
+            "Color Reference",
+            "Reference Weaving",
+            "Handfeel Standard",
+            "Remark",
+            "Expect Delivery Date",
+        ]
+    }
+})

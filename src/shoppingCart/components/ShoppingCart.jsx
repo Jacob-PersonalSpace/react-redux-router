@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 
+import PureComponent from '../../global/components/PureComponent.jsx'
+
 import bindFunctions from '../../util/bind-functions'
 
-import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
-import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
-import FCR from '../../global/FCR/components/FCR.jsx'
+// import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
+// import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
+// import FCR from '../../global/FCR/components/FCR.jsx'
 
 import '../css/shoppingCart.less'
 
-class ShoppingCart extends Component {
+class ShoppingCart extends PureComponent {
     constructor(props) {
         super(props)
 
@@ -54,7 +56,7 @@ class ShoppingCart extends Component {
                 <button onClick={() => history.push(`${match.url}/trialweave`)}>trialweave</button>
                 <button onClick={() => history.push(`${match.url}/fcr`)}>fcr</button>
 
-                <Switch>
+                {/* <Switch>
                     <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/handloom`} />} />
                     <Route path={`${match.url}/handloom`} render={() => <HandLoom
                         state={state.get('handLoomState')}
@@ -66,7 +68,7 @@ class ShoppingCart extends Component {
                         state={state.get('fcrState')}
                     />} />
                     <Redirect to={`${match.url}/handloom`} />
-                </Switch>
+                </Switch> */}
             </div>
         )
     }

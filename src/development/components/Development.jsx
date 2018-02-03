@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Route, withRouter, Redirect, Switch } from 'react-router-dom'
 
-import ShoppingCartEntrance from '../../global/components/ShoppingCartEntrance.jsx'
-import Collaboration from '../../global/collaboration/components/Collaboration.jsx'
-import Query from '../../global/query/components/Query.jsx'
-import FabricItem from '../../global/fabricItem/components/FabricItem.jsx'
+// import ShoppingCartEntrance from '../../global/components/ShoppingCartEntrance.jsx'
+// import Collaboration from '../../global/collaboration/components/Collaboration.jsx'
+// import Query from '../../global/query/components/Query.jsx'
+// import FabricItem from '../../global/fabricItem/components/FabricItem.jsx'
+
+import PureComponent from '../../global/components/PureComponent.jsx'
 
 import '../css/development.less'
 
-class Development extends Component {
+class Development extends PureComponent {
     constructor(props) {
         super(props)
     }
@@ -42,7 +44,7 @@ class Development extends Component {
         return (
             <div>
                 <div className="development">Development Page</div>
-                <ShoppingCartEntrance />
+                {/* <ShoppingCartEntrance />
                 <button onClick={() => history.push(`${match.url}/collaboration`)}>collaboration</button>
                 <button onClick={() => history.push(`${match.url}/query`)}>query</button>
                 <button onClick={() => history.push(`${match.url}/fabricitem`)}>fabricItem</button>
@@ -58,7 +60,7 @@ class Development extends Component {
                         state={state.get('fabricItemState')}
                     />} />
                     <Redirect to={`${match.url}/fabricitem`} />
-                </Switch>
+                </Switch> */}
             </div>
         )
     }

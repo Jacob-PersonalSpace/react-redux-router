@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash'
 
-import { protectedFetchAndValidateResult } from './fetch'
+import { protectedFetchAndValidateResult } from '../util/fetch'
 
 import {
     JOIN_CONVERSATION,

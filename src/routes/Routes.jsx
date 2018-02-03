@@ -5,6 +5,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import MainContainer from '../container'
 
+import '../global/css/main.less'
+
 const Routes = () => {
     return (
         <Router>

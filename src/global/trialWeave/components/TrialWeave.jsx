@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
+import PureComponent from '../../components/PureComponent.jsx'
 
 import '../css/trialWeave.less'
 
-class TrialWeave extends Component {
+class TrialWeave extends PureComponent {
     constructor(props) {
         super(props)
     }

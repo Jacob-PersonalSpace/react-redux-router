@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
+import PureComponent from '../../components/PureComponent.jsx'
 
 import '../css/handloom.less'
 
-class HandLoom extends Component {
+class HandLoom extends PureComponent {
     constructor(props) {
         super(props)
     }

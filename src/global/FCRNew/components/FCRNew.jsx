@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+import PureComponent from '../../components/PureComponent.jsx'
+
 import '../css/fcrNew.less'
 
-class FCRNew extends Component {
+class FCRNew extends PureComponent {
     constructor(props) {
         super(props)
     }

@@ -7,15 +7,14 @@ import PageHeader from './global/pageHeader/components/PageHeader.jsx'
 import Development from './development/components/Development.jsx'
 import ShoppingCart from './shoppingCart/components/ShoppingCart.jsx'
 import JoAssign from './joAssign/components/JoAssign.jsx'
+import PureComponent from './global/components/PureComponent.jsx'
 
 import * as developmentActions from './development/actions'
 import * as shoppingCartActions from './shoppingCart/actions'
 import * as joAssignActions from './joAssign/actions'
 import * as pageHeaderActions from './global/pageHeader/actions'
 
-import './global/css/main.less'
-
-class MainContainer extends Component {
+class MainContainer extends PureComponent {
     constructor(props) {
         super(props)
     }
@@ -65,8 +64,8 @@ class MainContainer extends Component {
                         state={shoppingCart}
                         actions={{ ...actions.shoppingCart }}
                     />} />
-                    <Route path="/joAssign" render={() => <joAssign
-                        state={joAssign}
+                    <Route path="/joAssign" render={() => <JoAssign
+                        state={{ joAssign }}
                         actions={{ ...actions.joAssign }}
                     />} />
                     <Redirect to="/development/fabricitem" />

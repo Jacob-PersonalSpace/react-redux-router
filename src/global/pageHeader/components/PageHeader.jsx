@@ -13,8 +13,6 @@ import headerupnib from '../../../../static/img/header-up-nib.png'
 import { intranetUrl } from '.././../../constants/index'
 
 import '../css/pageHeader.less'
-import 'font-awesome/css/font-awesome.min.css'
-import '../../css/pillandpillow.css'
 
 class PageHeader extends PureComponent {
     constructor(props) {
@@ -114,7 +112,6 @@ class PageHeader extends PureComponent {
 
     doAction(action) {
         if (action === 'line-plan/create') {
-            console.log('????????????????????????')
             window.location.replace(window.app.backendUrl.lpdWeb.url + 'lineplan.html?_=' + new Date().getTime())
         }
         else if (action === 'line-plan/history') {

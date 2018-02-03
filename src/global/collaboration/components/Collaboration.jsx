@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 
 import LeftContent from '../../components/LeftContent.jsx'
 import RightContent from '../../components/RightContent.jsx'
+import PureComponent from '../../components/PureComponent.jsx'
 
 import '../css/collaboration.less'
 
-class Collaboration extends Component {
+class Collaboration extends PureComponent {
     constructor(props) {
         super(props)
     }
