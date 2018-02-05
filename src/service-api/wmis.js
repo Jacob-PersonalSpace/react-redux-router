@@ -1,4 +1,4 @@
-import { protectedFetchAndValidateResult } from './fetch'
+import { protectedFetchAndValidateResult } from '../util/fetch'
 
 import {
     SEARCH_FINISH_LIST,

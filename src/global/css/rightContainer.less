@@ -10,4 +10,121 @@
         height: 100%;
         overflow: hidden;
     }
+    .handsontable td.area {
+        background: #F8F0EE;
+    }
+    .handsontable .wtBorder {
+        background-color: red !important;
+    }
+    .htCommentCell::after {
+        border-top: 6px solid #FF3A30;
+        left: 0;
+        right: inherit;
+        border-left: inherit;
+        border-right: 6px solid transparent;
+    }
+    .ht_master tr {
+        position: relative;
+    }
+    .ht_master tr td {
+        font-family: 'Roboto';
+        font-size: 13px;
+        color: #444;
+        padding: 4px 8px 4px 8px;
+        font-weight: normal;
+    }
+    .handsontableInput {
+        font-family: 'Roboto';
+        font-size: 13px;
+        color: #444;
+        box-shadow: 0 0 0 2px #FF3A30 inset;
+    }
+    .ht_clone_top {
+        z-index: 0;
+    }
+    .ht_clone_left {
+        z-index: 0;
+    }
+    .ht_clone_top_left_corner {
+        z-index: 0;
+    }
+    .ht_clone_top th {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #444;
+        padding-left: 4px;
+        text-align: left;
+    }
+    .htCore th {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #444; // padding: 4px 8px 4px 8px;
+        text-align: left;
+    }
+    /*** Headers background ***/
+    /* All headers */
+    .handsontable th {
+        background-color: #edeff1;
+    }
+    /* Row headers */
+    .ht_clone_left th {
+        background-color: #edeff1;
+    }
+    /* Column headers */
+    .ht_clone_top th {
+        background-color: #edeff1;
+    }
+    .htCore th {
+        background-color: #edeff1;
+    }
+    /*** Borders ***/
+    /* Row headers */
+    /* Bottom */
+    .ht_clone_top_left_corner th {
+        border-bottom: 1px solid #dedfe7;
+    }
+    /* Left and right */
+    .ht_clone_left th {
+        border-right: 1px solid #dedfe7;
+        border-left: 1px solid #dedfe7;
+    }
+    /* Column headers */
+    /* Top, bottom and right */
+    .ht_clone_top th {
+        border-top: 1px solid #dedfe7;
+        border-right: 1px solid #dedfe7;
+        border-bottom: 1px solid #dedfe7;
+    }
+    /* Left */
+    .ht_clone_top_left_corner th {
+        border-right: 1px solid #dedfe7;
+    }
+    /* Each cell */
+    .ht_master tr td {
+        border-right: 1px solid #dedfe7;
+        border-bottom: 1px solid #dedfe7;
+    }
+    /* Top and left of the table */
+    .handsontable tr:first-child th,
+    .handsontable tr:first-child td {
+        border-top: 1px solid #dedfe7;
+    }
+    .handsontable td:first-of-type {
+        border-left: 1px solid #dedfe7;
+    }
+    .handsontable th:first-child {
+        border-left: 1px solid #dedfe7;
+    }
+    .handsontable .changeType {
+        float: none;
+        margin: 3px 2px 0px -2px;
+        vertical-align: top;
+    }
+    .handsontable thead th {
+        padding-right: 6px;
+    }
 }

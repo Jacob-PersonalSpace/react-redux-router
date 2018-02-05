@@ -47,7 +47,9 @@ export const getSystemMenu = () => (dispatch, getState) => {
         dispatch(requestGetSystemMenu())
 
         getSystemMenuApi()
-            .then(data => dispatch(receiveGetSystemMenu(data)))
+            .then(data => {
+                dispatch(receiveGetSystemMenu(data))
+            })
             .catch(error => dispatch(failureGetSystemMenu(error)))
     } catch (error) {
         dispatch(failureGetSystemMenu(error))

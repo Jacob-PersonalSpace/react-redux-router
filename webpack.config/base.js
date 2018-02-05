@@ -32,6 +32,11 @@ module.exports = {
                 }),
             },
             {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     'file-loader'
@@ -45,7 +50,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            handsontable: path.resolve(__dirname, '../node_modules/handsontable-pro')
+            handsontable: path.resolve(__dirname, '../node_modules/handsontable-pro'),
+            jquery: 'jquery/dist/jquery.min.js',
         }
     },
     plugins: [

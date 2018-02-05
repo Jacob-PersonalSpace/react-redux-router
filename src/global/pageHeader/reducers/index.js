@@ -40,7 +40,7 @@ export const menuItemSet = (state = initMenuItemSet, action) => {
     }
 }
 
-const initSystemMenu = fromJS({})
+const initSystemMenu = fromJS([])
 
 export const systemMenu = (state = initSystemMenu, action) => {
     switch (action.type) {
@@ -53,7 +53,7 @@ export const systemMenu = (state = initSystemMenu, action) => {
     }
 }
 
-const initBreadcrumb = ['Development', 'Fabric', 'Woven']
+const initBreadcrumb = fromJS(['Development', 'Fabric', 'Woven'])
 
 export const breadcrumb = (state = initBreadcrumb, action) => {
     switch (action.type) {
@@ -62,7 +62,7 @@ export const breadcrumb = (state = initBreadcrumb, action) => {
     }
 }
 
-const initSites = ['Workbench']
+const initSites = fromJS(['Workbench'])
 
 export const sites = (state = initSites, action) => {
     switch (action.type) {
@@ -71,7 +71,7 @@ export const sites = (state = initSites, action) => {
     }
 }
 
-const initMenuItems = ['Product', 'Development', 'Planning', 'TNA']
+const initMenuItems = fromJS(['Product', 'Development', 'Planning', 'TNA'])
 
 export const menuItems = (state = initMenuItems, action) => {
     switch (action.type) {

@@ -18,11 +18,6 @@ module.exports = merge.smart(baseConfig, {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-            },
-            {
                 test: /\.(css|less)$/,
                 use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -31,18 +26,6 @@ module.exports = merge.smart(baseConfig, {
                         "less-loader",
                     ]
                 })),
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
             },
         ]
     },

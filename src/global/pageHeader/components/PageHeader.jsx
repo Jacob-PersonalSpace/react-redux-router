@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import $ from 'jquery'
 import { isEmpty } from 'lodash'
-import swal from 'sweetalert'
+import swal from 'sweetalert2'
 import { withRouter } from 'react-router-dom'
 
 import PureComponent from '../../components/PureComponent.jsx'
@@ -156,20 +156,16 @@ class PageHeader extends PureComponent {
             }
         }
 
-        swal("Confirm to discard changes?", {
-            buttons: {
-                cancel: "NO",
-                yes: "YES",
-            },
+        swal({
+            title: 'Are you sure?',
+            text: "You will discard changes!",
+            type: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
         })
-            .then((value) => {
-                switch (value) {
-                    case "yes":
-                        this.doAction(action)
-                        break
-
-                    default:
-                        break
+            .then(result => {
+                if (result.value) {
+                    this.doAction(action)
                 }
             })
     }

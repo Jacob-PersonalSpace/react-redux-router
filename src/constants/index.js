@@ -56,7 +56,7 @@ export const COLLABORATION_TO_SHOPPINGCART_STATUS = {
     'READY': '2',
 }
 
-export const masterColumns = [
+export const JOASSIGN_MASTER_COLUMNS = [
     {
         columnName: "GEW Recommendations (Finishing)",
         stateName: "finishingList",
@@ -282,7 +282,7 @@ export const shappingCartSheets = [
     { value: 'fabricCodeRequisition', text: 'Fabric Code Requisition' },
 ]
 
-export const joAssignSheets = [
+export const JOASSIGN_SHEETS = [
     { value: 'collaboration', text: 'COLLABORATION' },
     { value: 'assignment', text: 'ASSIGNMENT' },
 ]

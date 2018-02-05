@@ -6,12 +6,34 @@ import {
     EXPAND_JOASSIGN_LEFT_CONTAINER,
     COLLAPSE_JOASSIGN_LEFT_CONTAINER,
     JOASSIGN_CLICK_FOLDER,
+    JOASSIGN_RECEIVE_PROCEED,
 } from '../../actionTypes/index'
 
 const initRequestList = fromJS([])
 
 export const requestList = (state = initRequestList, action) => {
     switch (action.type) {
+        case JOASSIGN_RECEIVE_PROCEED:
+            let brandIndex = state.findIndex(obj => obj.get('brandCode') === action.payload.get('brandCode'))
+
+            if (brandIndex > -1) {
+                let childIndex = state.getIn([brandIndex, 'child']).findIndex(obj => obj.get('handloomRequestNo') === action.payload.get('handloomRequestNo'))
+
+                if (childIndex > -1) {
+                    let count = action.payload.get('count')
+
+                    if (count === 0) {
+                        return state.updateIn([brandIndex, 'child'], v => v.splice(childIndex, 1))
+                    }
+                    else {
+                        return state.updateIn([brandIndex, 'child', childIndex], v => v.set('count', count))
+                    }
+                }
+            }
+
+            return state
+            break
+
         case RECEIVE_REQUEST_LIST:
             let newState = action.payload
 
@@ -37,7 +59,6 @@ export const requestList = (state = initRequestList, action) => {
             else {
                 return state
             }
-
             break
 
         default:

@@ -1,4 +1,4 @@
-import { protectedFetchAndValidateResult } from './fetch'
+import { protectedFetchAndValidateResult } from '../util/fetch'
 
 import {
     GET_SHIPMODE,
@@ -7,7 +7,7 @@ import {
     GET_WASHTYPE,
 } from '../constants/apiTypes'
 
-export const getShipMode = pageSize => {
+export const getShipModeApi = pageSize => {
     let urlKey = GET_SHIPMODE,
         requestObject = {
             pageSize,
@@ -24,7 +24,7 @@ export const getShipMode = pageSize => {
     return protectedFetchAndValidateResult(urlKey, requestObject, options)
 }
 
-export const getDestination = pageSize => {
+export const getDestinationApi = pageSize => {
     let urlKey = GET_DESTINATION,
         requestObject = {
             pageSize,
@@ -41,7 +41,7 @@ export const getDestination = pageSize => {
     return protectedFetchAndValidateResult(urlKey, requestObject, options)
 }
 
-export const getWashType = pageSize => {
+export const getWashTypeApi = pageSize => {
     let urlKey = GET_WASHTYPE,
         requestObject = {
             pageSize,
@@ -58,7 +58,7 @@ export const getWashType = pageSize => {
     return protectedFetchAndValidateResult(urlKey, requestObject, options)
 }
 
-export const getGarmentFeature = pageSize => {
+export const getGarmentFeatureApi = pageSize => {
     let urlKey = GET_GARMENTFEATURE,
         requestObject = {
             pageSize,
