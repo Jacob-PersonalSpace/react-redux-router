@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/expandedDirectory.less'
+import './expandedDirectory.less'
 
 class ExpandedDirectory extends PureComponent {
     constructor(props) {

@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/sheetSelector.less'
+import './sheetSelector.less'
 
 class SheetSelector extends PureComponent {
     constructor(props) {

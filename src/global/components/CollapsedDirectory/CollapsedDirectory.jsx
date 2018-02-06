@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/collapsedDirectory.less'
-import 'font-awesome/css/font-awesome.min.css'
+import './collapsedDirectory.less'
 
 class CollapsedDirectory extends PureComponent {
     constructor(props) {

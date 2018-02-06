@@ -22,12 +22,12 @@ import {
     JOASSIGN_REQUEST_FILE,
 } from '../../actionTypes/index'
 
-import LeftContainer from '../../global/components/LeftContainer.jsx'
-import ExpandedDirectory from '../../global/components/ExpandedDirectory.jsx'
-import Item from '../../global/components/Item.jsx'
-import RightContainer from '../../global/components/RightContainer.jsx'
+import LeftContainer from '../../global/components/LeftContainer//LeftContainer.jsx'
+import ExpandedDirectory from '../../global/components/ExpandedDirectory/ExpandedDirectory.jsx'
+import Item from '../../global/components/Item/Item.jsx'
+import RightContainer from '../../global/components/RightContainer/RightContainer.jsx'
 import PureComponent from '../../global/components/PureComponent.jsx'
-import SheetSelector from '../../global/components/SheetSelector.jsx'
+import SheetSelector from '../../global/components/SheetSelector/SheetSelector.jsx'
 
 import '../css/joAssign.less'
 

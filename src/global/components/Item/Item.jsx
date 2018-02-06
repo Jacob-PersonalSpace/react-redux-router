@@ -5,10 +5,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/item.less'
-import 'font-awesome/css/font-awesome.min.css'
+import './item.less'
 
 class Item extends PureComponent {
     constructor(props) {
@@ -38,8 +37,6 @@ class Item extends PureComponent {
     render() {
         const { state, actions } = this.props
         const { name, count, icon, style, deepth, _id } = state
-
-        console.log('Item component state', state)
 
         const itemPaddingLeft = 20 + deepth * 15 + 'px'
         const stringCount = !isUndefined(count) ? ('(' + count + ')') : ''

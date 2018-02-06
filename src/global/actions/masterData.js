@@ -131,19 +131,17 @@ export const getDestination = (page) => (dispatch, getState) => {
         dispatch(requestGetDestination())
         dispatch(onAddAPIRequestForBlockUi())
 
-        setTimeout(() => {
-            getDestinationApi(-1)
-                .then(data => {
-                    dispatch(receiveGetDestination(data))
-                })
-                .catch(error => {
-                    dispatch(failureGetDestination(error))
-                    dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
-                })
-                .then(() => {
-                    dispatch(onRemoveAPIRequestForBlockUi())
-                })
-        }, 1000000)
+        getDestinationApi(-1)
+            .then(data => {
+                dispatch(receiveGetDestination(data))
+            })
+            .catch(error => {
+                dispatch(failureGetDestination(error))
+                dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
+            })
+            .then(() => {
+                dispatch(onRemoveAPIRequestForBlockUi())
+            })
     } catch (error) {
         dispatch(failureGetDestination(error))
         dispatch(onRemoveAPIRequestForBlockUi())

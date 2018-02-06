@@ -3,8 +3,8 @@ import { render } from 'react-dom'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 
-import PureComponent from './PureComponent.jsx'
-import CollapsedDirectory from './CollapsedDirectory.jsx'
+import PureComponent from '../PureComponent.jsx'
+import CollapsedDirectory from '../CollapsedDirectory/CollapsedDirectory.jsx'
 
 class LeftContainer extends PureComponent {
     constructor(props) {
