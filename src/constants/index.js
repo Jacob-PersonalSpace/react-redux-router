@@ -287,7 +287,7 @@ export const JOASSIGN_SHEETS = [
     { value: 'assignment', text: 'ASSIGNMENT' },
 ]
 
-export const joAssignBreadcrumb = ['Development', 'Fabric', 'Woven', 'Assignment']
+export const JOASSIGN_BREADCRUMB = ['Development', 'Fabric', 'Woven', 'Assignment']
 
 export const fcrSheets = [
     { value: 'new', text: 'NEW' },

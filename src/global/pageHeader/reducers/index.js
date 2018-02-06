@@ -8,6 +8,7 @@ import {
     REQUEST_GETSYSTEMMENU,
     RECEIVE_GETSYSTEMMENU,
     FAILURE_GETSYSTEMMENU,
+    UPDATE_BREADCRUMB,
 } from '../../../actionTypes/index'
 
 const initMenu = ""
@@ -57,6 +58,9 @@ const initBreadcrumb = fromJS(['Development', 'Fabric', 'Woven'])
 
 export const breadcrumb = (state = initBreadcrumb, action) => {
     switch (action.type) {
+        case UPDATE_BREADCRUMB:
+            return action.payload
+
         default:
             return state
     }

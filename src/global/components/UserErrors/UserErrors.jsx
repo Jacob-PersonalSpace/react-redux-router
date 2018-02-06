@@ -64,8 +64,6 @@ class UserErrors extends PureComponent {
                 })
             }
 
-            console.log('???????????', options)
-
             swal(options)
                 .then(() => {
                     actions.onRemoveUserErrorForAlert(userErrors.getIn([0, 'index']))
@@ -79,7 +77,7 @@ class UserErrors extends PureComponent {
 UserErrors.propTypes = {
     state: PropTypes.shape({
         userErrors: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
-            message: PropTypes.string,
+            message: PropTypes.any,
             index: PropTypes.number.isRequired,
             title: PropTypes.string,
             alertType: PropTypes.string,

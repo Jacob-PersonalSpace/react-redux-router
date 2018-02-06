@@ -126,7 +126,7 @@ export const onClickProceed = (issueData) => (dispatch, getState) => {
                 dispatch(onAddUserErrorForAlert({
                     title: 'SUCCESS',
                     html: alertMessage.join(''),
-                    alertType: 'success',
+                    alertType: failureRowIds.length > 0 ? 'warning' : 'success',
                 }))
             })
             .catch(error => {

@@ -7,6 +7,8 @@ import {
     COLLAPSE_JOASSIGN_LEFT_CONTAINER,
     JOASSIGN_CLICK_FOLDER,
     JOASSIGN_RECEIVE_PROCEED,
+    REQUEST_REQUEST_LIST,
+    FAILURE_REQUEST_LIST,
 } from '../../actionTypes/index'
 
 const initRequestList = fromJS([])
@@ -83,7 +85,26 @@ export const isExpanded = (state = initIsExpanded, action) => {
     }
 }
 
+const initIsFetchingRequestList = false
+
+export const isFetchingRequestList = (state = initIsFetchingRequestList, action) => {
+    switch (action.type) {
+        case REQUEST_REQUEST_LIST:
+            return true
+            break
+
+        case RECEIVE_REQUEST_LIST:
+        case FAILURE_REQUEST_LIST:
+            return true
+            break
+
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     requestList,
     isExpanded,
+    isFetchingRequestList,
 })

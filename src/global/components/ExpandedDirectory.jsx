@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import PureComponent from './PureComponent.jsx'
 
 import '../css/expandedDirectory.less'
-import 'font-awesome/css/font-awesome.min.css'
 
 class ExpandedDirectory extends PureComponent {
     constructor(props) {

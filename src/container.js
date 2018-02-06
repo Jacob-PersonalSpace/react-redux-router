@@ -81,7 +81,7 @@ class MainContainer extends PureComponent {
 
             if (items.size > 0) {
                 let issueData = fileContent.updateIn(['content', 0, 'body'], body => body.clear().push(...items))
-                
+
                 this.props.actions.joAssign.onClickProceed(issueData)
             } else {
                 this.props.actions.global.onAddUserErrorForAlert({
@@ -172,7 +172,10 @@ class MainContainer extends PureComponent {
                             joAssign,
                             masterDataState: global.get('masterDataState'),
                         }}
-                        actions={{ ...actions.joAssign }}
+                        actions={{
+                            ...actions.joAssign,
+                            updateBreadcrumb: actions.pageHeader.updateBreadcrumb,
+                        }}
                     />} />
                     <Redirect to="/development/fabricitem" />
                 </Switch>
@@ -187,9 +190,11 @@ MainContainer.propTypes = {
             leftContainerState: ImmutablePropTypes.contains({
                 requestList: ImmutablePropTypes.listOf(ImmutablePropTypes.map.isRequired).isRequired,
                 isExpanded: PropTypes.bool.isRequired,
+                isFetchingRequestList: PropTypes.bool.isRequired,
             }).isRequired,
             rightContainerState: ImmutablePropTypes.contains({
                 fileContent: ImmutablePropTypes.map.isRequired,
+                isFetchingRequestFile: PropTypes.bool.isRequired,
             }).isRequired,
             sheetSelectorState: ImmutablePropTypes.contains({
                 sheets: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
@@ -228,7 +233,7 @@ MainContainer.propTypes = {
             userErrorState: ImmutablePropTypes.contains({
                 userErrors: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
                     title: PropTypes.string,
-                    message: PropTypes.string,
+                    message: PropTypes.any,
                     alertType: PropTypes.string,
                     index: PropTypes.number.isRequired,
                     html: PropTypes.string,
@@ -260,6 +265,7 @@ MainContainer.propTypes = {
             selectMenuItem: PropTypes.func.isRequired,
             addMenuItemSet: PropTypes.func.isRequired,
             cleanMenuItemSet: PropTypes.func.isRequired,
+            updateBreadcrumb: PropTypes.func.isRequired,
         }),
         global: PropTypes.shape({
             onAddUserErrorForAlert: PropTypes.func.isRequired,

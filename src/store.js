@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { fromJS } from 'immutable'
+import reduxMiddleware from 'react-block-ui/reduxMiddleware'
 
 import rootReducer from './reducer'
 
@@ -16,6 +17,7 @@ const enhancers = []
 const middleWare = [
     thunk,
     logger,
+    reduxMiddleware,
 ]
 
 if (process.env.NODE_ENV === 'development') {

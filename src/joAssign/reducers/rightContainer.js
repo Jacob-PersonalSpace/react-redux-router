@@ -9,6 +9,8 @@ import {
     JOASSIGN_RECEIVE_FILE,
     JOASSIGN_CHANGE_CELLS,
     JOASSIGN_RECEIVE_PROCEED,
+    JOASSIGN_REQUEST_FILE,
+    JOASSIGN_FAILURE_FILE,
 } from '../../actionTypes/index'
 
 const initFileContent = fromJS({})
@@ -40,6 +42,26 @@ export const fileContent = (state = initFileContent, action) => {
     }
 }
 
+const initIsFetchingRequestFile = false
+
+export const isFetchingRequestFile = (state = initIsFetchingRequestFile, action) => {
+    switch (action.type) {
+        case JOASSIGN_FAILURE_FILE:
+        case JOASSIGN_RECEIVE_FILE:
+            return false
+            break
+
+        case JOASSIGN_REQUEST_FILE:
+            return true
+
+            break
+
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     fileContent,
+    isFetchingRequestFile,
 })

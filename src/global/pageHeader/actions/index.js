@@ -11,7 +11,13 @@ import {
     REQUEST_GETSYSTEMMENU,
     RECEIVE_GETSYSTEMMENU,
     FAILURE_GETSYSTEMMENU,
+    UPDATE_BREADCRUMB,
 } from '../../../actionTypes/index'
+
+export const updateBreadcrumb = data => ({
+    type: UPDATE_BREADCRUMB,
+    payload: fromJS(data),
+})
 
 export const selectMenuItem = item => ({
     type: SELECT_MENUITEM,

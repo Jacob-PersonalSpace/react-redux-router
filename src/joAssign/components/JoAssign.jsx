@@ -6,12 +6,21 @@ import { List, fromJS } from 'immutable'
 import HotTable from 'react-handsontable'
 import Handsontable from 'handsontable'
 import { trim } from 'lodash'
+import ReduxBlockUi from 'react-block-ui/redux'
+import { Loader, Types } from 'react-loaders'
+import 'react-block-ui/style.css'
+import 'loaders.css/loaders.min.css'
 
 import 'handsontable/dist/handsontable.full.css'
 
 import bindFunctions from '../../util/bind-functions'
 import { getLabelByValue, changeStringToBoolean } from '../../util/helper'
-import { JOASSIGN_MASTER_COLUMNS } from '../../constants/index'
+import { JOASSIGN_MASTER_COLUMNS, JOASSIGN_BREADCRUMB } from '../../constants/index'
+import {
+    JOASSIGN_FAILURE_FILE,
+    JOASSIGN_RECEIVE_FILE,
+    JOASSIGN_REQUEST_FILE,
+} from '../../actionTypes/index'
 
 import LeftContainer from '../../global/components/LeftContainer.jsx'
 import ExpandedDirectory from '../../global/components/ExpandedDirectory.jsx'
@@ -145,7 +154,7 @@ class JoAssign extends PureComponent {
                     colHeaders: fileContent.content[0].header.colHeaders,
                     columns: fileContent.content[0].header.columns,
                     rowHeaders: true,
-                    dropdownMenu: ['clear_column', "---------", 'make_read_only', "---------", 'filter_by_condition', 'filter_by_value', 'filter_action_bar'],
+                    dropdownMenu: ['clear_column', "---------", 'filter_by_condition', 'filter_by_value', 'filter_action_bar'],
                     filters: true,
                     beforeChange: (changes, source) => {
                         this.beforeChange(changes, source)
@@ -171,6 +180,7 @@ class JoAssign extends PureComponent {
 
     componentWillMount() {
         this.props.actions.onFetchHandloomRequestList()
+        this.props.actions.updateBreadcrumb(JOASSIGN_BREADCRUMB)
         console.log('JoAssign componentWillMount')
     }
 
@@ -192,7 +202,7 @@ class JoAssign extends PureComponent {
         const isExpanded = joAssign.getIn(['leftContainerState', 'isExpanded'])
 
         return (
-            <div className="joAssign">
+            <div className="joassign">
                 <SheetSelector
                     state={{
                         sheets: joAssign.getIn(['sheetSelectorState', 'sheets']),
@@ -228,12 +238,18 @@ class JoAssign extends PureComponent {
                 <RightContainer
                     style={{
                         height: 'calc(100% - 214px)',
-                        width: isExpanded ? 'calc(100% - 259px)' : 'calc(100% - 50px)',
-                        left: isExpanded ? '257px' : '50px',
+                        width: isExpanded ? 'calc(100% - 262px)' : 'calc(100% - 52px)',
+                        left: isExpanded ? '262px' : '52px',
                     }}
                 >
                     {
-                        this.renderRequestTable()
+                        <ReduxBlockUi className="block-ui-hidden" tag="div" block={JOASSIGN_REQUEST_FILE} unblock={[JOASSIGN_RECEIVE_FILE, JOASSIGN_FAILURE_FILE]} loader={<Loader active={true} type="ball-spin-fade-loader" color="#02a17c" />}>
+                            <div style={{ width: '100%', height: '100%' }}>
+                                {
+                                    this.renderRequestTable()
+                                }
+                            </div>
+                        </ReduxBlockUi>
                     }
                 </RightContainer>
             </div>
@@ -256,9 +272,11 @@ JoAssign.propTypes = {
             leftContainerState: ImmutablePropTypes.contains({
                 requestList: ImmutablePropTypes.list.isRequired,
                 isExpanded: PropTypes.bool.isRequired,
+                isFetchingRequestList: PropTypes.bool.isRequired,
             }),
             rightContainerState: ImmutablePropTypes.contains({
                 fileContent: ImmutablePropTypes.map.isRequired,
+                isFetchingRequestFile: PropTypes.bool.isRequired,
             }),
             sheetSelectorState: ImmutablePropTypes.contains({
                 sheets: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
