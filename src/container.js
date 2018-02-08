@@ -11,6 +11,7 @@ import ShoppingCart from './shoppingCart/components/ShoppingCart.jsx'
 import JoAssign from './joAssign/components/JoAssign.jsx'
 import PureComponent from './global/components/PureComponent.jsx'
 import BlockWholeUi from './global/components/BlockUi/BlockWholeUi.jsx'
+import UserErrors from './global/components/UserErrors/UserErrors.jsx'
 
 import * as developmentActions from './development/actions'
 import * as shoppingCartActions from './shoppingCart/actions'
@@ -59,6 +60,15 @@ class MainContainer extends PureComponent {
                     state={{
                         ifShow: global.getIn(['apiRequestState', 'apiRequestsForBlockUi']) > 0,
                         message: '',
+                    }}
+                />
+
+                <UserErrors
+                    state={{
+                        userErrors: global.getIn(['userErrorState', 'userErrors']),
+                    }}
+                    actions={{
+                        onRemoveUserErrorForAlert: actions.global.onRemoveUserErrorForAlert,
                     }}
                 />
 
