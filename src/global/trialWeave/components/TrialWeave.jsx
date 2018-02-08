@@ -13,6 +13,7 @@ import ExpandedDirectory from '../../components/ExpandedDirectory/ExpandedDirect
 
 import '../css/trialWeave.less'
 
+import { SHOPPINGCART_TRIALWEAVE_BREADCRUMB } from '../../../constants/index'
 import bindFunctions from '../../../util/bind-functions'
 
 class TrialWeave extends PureComponent {
@@ -32,6 +33,7 @@ class TrialWeave extends PureComponent {
     }
 
     componentWillMount() {
+        this.props.actions.updateBreadcrumb(SHOPPINGCART_TRIALWEAVE_BREADCRUMB)
         console.log('TrialWeave componentWillMount')
     }
 
@@ -57,11 +59,13 @@ class TrialWeave extends PureComponent {
 
     onKeyPress(evt) {
         if (evt.key === 'Enter') {
-            this.textareaRef.blur()
+            if (!evt.shiftKey) {
+                this.textareaRef.blur()
 
-            evt.persist()
-            evt.returnValue = false
-            evt.preventDefault()
+                evt.persist()
+                evt.returnValue = false
+                evt.preventDefault()
+            }
         }
     }
 

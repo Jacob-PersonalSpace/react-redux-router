@@ -4,17 +4,15 @@ import { Route, withRouter, Switch, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 
-import PureComponent from '../../global/components/PureComponent.jsx'
-
-import bindFunctions from '../../util/bind-functions'
-
 import SheetSelector from '../../global/components/SheetSelector/SheetSelector.jsx'
 import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
+import PureComponent from '../../global/components/PureComponent.jsx'
 import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
 // import FCR from '../../global/FCR/components/FCR.jsx'
 
 import '../css/shoppingCart.less'
 
+import bindFunctions from '../../util/bind-functions'
 import { SHOPPINGCART_SHEETS } from '../../constants/index'
 
 class ShoppingCart extends PureComponent {
