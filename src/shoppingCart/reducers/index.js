@@ -2,20 +2,12 @@ import { combineReducers } from 'redux-immutable'
 
 import handLoomState from '../../global/handLoom/reducers'
 import trialWeaveState from '../../global/trialWeave/reducers'
-import fcrState from '../../global/FCR/reducers'
-
-const initShoppingCartState = []
-
-export const shoppingCartState = (state = initShoppingCartState, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
+// import fcrState from '../../global/FCR/reducers'
+import sheetSelectorState from './sheetSelector'
 
 export default combineReducers({
-    shoppingCartState,
     handLoomState,
     trialWeaveState,
-    fcrState,
+    // fcrState,
+    sheetSelectorState,
 })

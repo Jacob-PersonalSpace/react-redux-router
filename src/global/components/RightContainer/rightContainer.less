@@ -1,0 +1,91 @@
+@accentColor: #FF3A30;
+.htDropdownMenu {
+    position: absolute !important;
+}
+
+.right-container {
+    position: absolute;
+    background-color: #F9F9F9;
+    top: 212px;
+    font-family: 'Roboto';
+    font-size: 10px;
+    font-weight: 700;
+    .block-ui {
+        position: relative;
+        min-height: 3em;
+        height: 100%;
+        width: 100%;
+        .block-ui-message-container {
+            left: 50%;
+        }
+    }
+    .block-ui-hidden {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    .handsontable td {
+        font-size: 13px;
+    }
+    .handsontable td.area {
+        background: #F8F0EE;
+    }
+    .handsontable .wtBorder {
+        background-color: red !important;
+    }
+    .ht_master tr td {
+        font-family: 'Roboto';
+        font-size: 13px;
+        color: #444;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        font-weight: normal;
+    }
+    .handsontableInput {
+        font-family: 'Roboto';
+        font-size: 13px;
+        color: #444;
+        box-shadow: 0 0 0 2px @accentColor inset;
+    }
+    .ht_clone_top th {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #444;
+        padding-left: 4px;
+        text-align: left;
+    }
+    .htCore th {
+        font-family: 'Roboto Condensed';
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #444;
+        text-align: left;
+    }
+    /*** Headers background ***/
+    /* All headers */
+    .handsontable th {
+        background-color: #edeff1;
+    }
+    /* Row headers */
+    .ht_clone_left th {
+        background-color: #edeff1;
+    }
+    /* Column headers */
+    .ht_clone_top th {
+        background-color: #edeff1;
+    }
+    .htCore th {
+        background-color: #edeff1;
+    }
+    .handsontable .changeType {
+        float: none;
+        margin: 3px 2px 0px -2px;
+        vertical-align: top;
+    }
+    .handsontable thead th {
+        padding-right: 6px;
+    }
+}

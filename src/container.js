@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import PageHeader from './global/pageHeader/components/PageHeader.jsx'
 import Development from './development/components/Development.jsx'
@@ -75,6 +76,10 @@ class MainContainer extends PureComponent {
     }
 }
 
+MainContainer.propTypes = {
+
+}
+
 const mapStateToProps = state => {
     console.debug('whole state tree: ', state.toJS())
 
@@ -84,6 +89,7 @@ const mapStateToProps = state => {
             shoppingCart: state.get('shoppingCart'),
             joAssign: state.get('joAssign'),
             pageHeader: state.get('pageHeader'),
+            global: state.get('global'),
         },
     }
 }

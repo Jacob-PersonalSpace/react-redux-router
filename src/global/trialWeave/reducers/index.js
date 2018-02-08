@@ -1,38 +1,9 @@
 import { combineReducers } from 'redux-immutable'
 
-const initTrialWeaveState = 'Here is shoppingCart-trialWeave component'
-
-export const trialWeaveState = (state = initTrialWeaveState, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
-
-const initShoppingCartTrialWeaveLeftContentState = 'Here is shoppingCart-TrialWeave left content component'
-
-export const shoppingCartTrialWeaveLeftContentState = (state = initShoppingCartTrialWeaveLeftContentState, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
-
-const initShoppingCartTrialWeaveRightContentState = 'Here is shoppingCart-TrialWeave right content component'
-
-export const shoppingCartTrialWeaveRightContentState = (state = initShoppingCartTrialWeaveRightContentState, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
+import leftContainerState from './leftContainer'
+// import rightContainerState from './rightContainer'
 
 export default combineReducers({
-    trialWeaveState,
-    leftContentState: combineReducers({
-        leftContentLabel: shoppingCartTrialWeaveLeftContentState,
-    }),
-    rightContentState: combineReducers({
-        rightContentLabel: shoppingCartTrialWeaveRightContentState,
-    }),
+    leftContainerState,
+    // rightContainerState,
 })

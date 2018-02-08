@@ -1,4 +1,4 @@
-import { protectedFetchAndValidateResult } from './fetch'
+import { protectedFetchAndValidateResult } from '../util/fetch'
 
 import {
     GET_SHIPMODE,

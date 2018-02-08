@@ -1,0 +1,61 @@
+@label-color: #646472;
+@label-size: 12px;
+@value-color: #737384;
+.twRequestContainer {
+    padding-left: 8px;
+    padding-right: 10px;
+    height: 100%;
+    background-color: #F9F9F9;
+    color: @label-color;
+    fieldset {
+        border: 0px;
+        width: 90%;
+        .custom-react-select {
+            .Select-control {
+                border: unset;
+                height: 22px;
+                border-radius: unset;
+                .Select-value-label {
+                    font-size: @label-size;
+                    color: @value-color !important;
+                }
+                .Select-placeholder {
+                    font-size: @label-size;
+                }
+            }
+            .Select-menu-outer {
+                font-size: 9px;
+            }
+        }
+        .field-name {
+            // line-height: 28px;
+            font-size: @label-size;
+        }
+        .field-value {
+            left: 110px;
+            border: 0px;
+            font-family: 'Roboto';
+            font-size: @label-size;
+            color: @value-color;
+            padding: 5px 10px;
+            width: ~"calc(100% - 155px)";
+        }
+        .field-input {
+            left: 110px;
+            border: 0px;
+            font-family: 'Roboto';
+            font-size: @label-size;
+            color: @value-color;
+            padding: 5px 10px;
+            width: ~"calc(100% - 155px)";
+        }
+        textarea {
+            border: 0px;
+            font-family: 'Roboto';
+            font-size: @label-size;
+            color: @value-color;
+            height: 100px !important;
+            width: 180px !important;
+        }
+    }
+}

@@ -6,8 +6,8 @@ import PureComponent from '../../global/components/PureComponent.jsx'
 
 import bindFunctions from '../../util/bind-functions'
 
-// import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
-// import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
+import HandLoom from '../../global/handLoom/components/HandLoom.jsx'
+import TrialWeave from '../../global/trialWeave/components/TrialWeave.jsx'
 // import FCR from '../../global/FCR/components/FCR.jsx'
 
 import '../css/shoppingCart.less'
@@ -56,7 +56,7 @@ class ShoppingCart extends PureComponent {
                 <button onClick={() => history.push(`${match.url}/trialweave`)}>trialweave</button>
                 <button onClick={() => history.push(`${match.url}/fcr`)}>fcr</button>
 
-                {/* <Switch>
+                <Switch>
                     <Route exact path={`${match.url}`} render={() => <Redirect to={`${match.url}/handloom`} />} />
                     <Route path={`${match.url}/handloom`} render={() => <HandLoom
                         state={state.get('handLoomState')}
@@ -64,11 +64,11 @@ class ShoppingCart extends PureComponent {
                     <Route path={`${match.url}/trialweave`} render={() => <TrialWeave
                         state={state.get('trialWeaveState')}
                     />} />
-                    <Route path={`${match.url}/fcr`} render={() => <FCR
+                    {/* <Route path={`${match.url}/fcr`} render={() => <FCR
                         state={state.get('fcrState')}
-                    />} />
+                    />} /> */}
                     <Redirect to={`${match.url}/handloom`} />
-                </Switch> */}
+                </Switch>
             </div>
         )
     }

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { withRouter } from 'react-router-dom'
 
-import PureComponent from '../components/PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/shoppingCartEntrance.less'
+import './shoppingCartEntrance.less'
 
 class ShoppingCartEntrance extends PureComponent {
     constructor(props) {

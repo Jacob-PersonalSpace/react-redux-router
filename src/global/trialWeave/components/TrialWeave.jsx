@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import LeftContent from '../../components/LeftContent.jsx'
-import RightContent from '../../components/RightContent.jsx'
+// import LeftContent from '../../components/LeftContent.jsx'
+// import RightContent from '../../components/RightContent.jsx'
 import PureComponent from '../../components/PureComponent.jsx'
 
 import '../css/trialWeave.less'
@@ -35,17 +35,15 @@ class TrialWeave extends PureComponent {
     render() {
         const { state, actions } = this.props
 
-        console.debug('trialweave component state: ', state.toJS())
-
         return (
             <div>
-                <div className="trialweave">{state.get('trialWeaveState')}</div>
-                <LeftContent
+                <div className="trialweave">aaaa</div>
+                {/* <LeftContent
                     state={state.get('leftContentState')}
                 />
                 <RightContent
                     state={state.get('rightContentState')}
-                />
+                /> */}
             </div>
         )
     }

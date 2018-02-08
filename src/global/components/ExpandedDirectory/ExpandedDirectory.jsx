@@ -3,10 +3,9 @@ import { render } from 'react-dom'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/expandedDirectory.less'
-import 'font-awesome/css/font-awesome.min.css'
+import './expandedDirectory.less'
 
 class ExpandedDirectory extends PureComponent {
     constructor(props) {
@@ -58,7 +57,7 @@ class ExpandedDirectory extends PureComponent {
 }
 
 ExpandedDirectory.propTypes = {
-    children: PropTypes.array,
+    children: PropTypes.any,
     actions: PropTypes.shape({
         onCollapseDirectory: PropTypes.func.isRequired,
     }),

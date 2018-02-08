@@ -38,7 +38,7 @@ export const fabricWovenTypes = [
     { value: 'fabriccoderequisition', text: 'Fabric Code Requisition' },
 ]
 
-export const breadcrumb = ['Development', 'Fabric', 'Woven']
+export const BASE_BREADCRUMB = ['Development', 'Fabric', 'Woven']
 
 export const disableFilter = true
 
@@ -56,7 +56,7 @@ export const COLLABORATION_TO_SHOPPINGCART_STATUS = {
     'READY': '2',
 }
 
-export const masterColumns = [
+export const JOASSIGN_MASTER_COLUMNS = [
     {
         columnName: "GEW Recommendations (Finishing)",
         stateName: "finishingList",
@@ -276,18 +276,24 @@ export const fcrGarmentFtyMasterData = [
     { value: 'N', label: 'OTHER' },
 ]
 
-export const shappingCartSheets = [
+export const SHOPPINGCART_SHEETS = [
     { value: 'handloom', text: 'HandLoom' },
     { value: 'trialWeave', text: 'Trial Weave' },
     { value: 'fabricCodeRequisition', text: 'Fabric Code Requisition' },
 ]
 
-export const joAssignSheets = [
+export const JOASSIGN_SHEETS = [
     { value: 'collaboration', text: 'COLLABORATION' },
     { value: 'assignment', text: 'ASSIGNMENT' },
 ]
 
-export const joAssignBreadcrumb = ['Development', 'Fabric', 'Woven', 'Assignment']
+export const JOASSIGN_BREADCRUMB = [...BASE_BREADCRUMB, 'Assignment']
+
+export const SHOPPINGCART_HANDLOOM_BREADCRUMB = [...BASE_BREADCRUMB, 'ShoppingCart', 'Handloom']
+
+export const SHOPPINGCART_TRIALWEAVE_BREADCRUMB = [...BASE_BREADCRUMB, 'ShoppingCart', 'TrialWeave']
+
+export const SHOPPINGCART_FCR_BREADCRUMB = [...BASE_BREADCRUMB, 'ShoppingCart', 'FCR']
 
 export const fcrSheets = [
     { value: 'new', text: 'NEW' },

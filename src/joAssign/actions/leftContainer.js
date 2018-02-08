@@ -6,6 +6,12 @@ import {
 } from '../../service-api/development'
 
 import {
+    onAddUserErrorForAlert,
+    onAddAPIRequestForBlockUi,
+    onRemoveAPIRequestForBlockUi,
+} from '../../global/actions'
+
+import {
     REQUEST_REQUEST_LIST,
     RECEIVE_REQUEST_LIST,
     FAILURE_REQUEST_LIST,
@@ -47,13 +53,22 @@ export const onCollapseDirectory = () => ({
 
 export const onFetchHandloomRequestList = () => (dispatch, getState) => {
     try {
+        dispatch(onAddAPIRequestForBlockUi())
         dispatch(requestHandloomRequestList())
 
         getHandloomRequestHeaderApi()
             .then(data => dispatch(receiveHandloomRequestList(data)))
-            .catch(error => dispatch(failureHandloomRequestList(error)))
+            .catch(error => {
+                dispatch(failureHandloomRequestList(error))
+                dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
+            })
+            .then(() => {
+                dispatch(onRemoveAPIRequestForBlockUi())
+            })
     } catch (error) {
         dispatch(failureHandloomRequestList(error))
+        dispatch(onRemoveAPIRequestForBlockUi())
+        dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
     }
 }
 
@@ -78,8 +93,12 @@ export const onOpenHandloomRequest = (brandCode, _id) => (dispatch, getState) =>
 
         openHandloomRequestApi(_id)
             .then(data => dispatch(receiveGetFileContent(data)))
-            .catch(error => dispatch(failureGetFileContent(error)))
+            .catch(error => {
+                dispatch(failureGetFileContent(error))
+                dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
+            })
     } catch (error) {
         dispatch(failureGetFileContent(error))
+        dispatch(onAddUserErrorForAlert({ title: 'ERROR', message: error, alertType: 'error' }))
     }
 }

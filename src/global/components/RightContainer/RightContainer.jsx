@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 
-import PureComponent from './PureComponent.jsx'
+import PureComponent from '../PureComponent.jsx'
 
-import '../css/rightContainer.less'
+import './rightContainer.less'
 
 class RightContainer extends PureComponent {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import LeftContent from '../../components/LeftContent.jsx'
-import RightContent from '../../components/RightContent.jsx'
+// import LeftContent from '../../components/LeftContent.jsx'
+// import RightContent from '../../components/RightContent.jsx'
 import PureComponent from '../../components/PureComponent.jsx'
 
 import '../css/handloom.less'
@@ -35,17 +35,15 @@ class HandLoom extends PureComponent {
     render() {
         const { state, actions } = this.props
 
-        console.debug('handloom component state: ', state.toJS())
-
         return (
             <div>
-                <div className="handloom">{state.get('handLoomState')}</div>
-                <LeftContent
+                <div className="handloom">bbbb</div>
+                {/* <LeftContent
                     state={state.get('leftContentState')}
                 />
                 <RightContent
                     state={state.get('rightContentState')}
-                />
+                /> */}
             </div>
         )
     }
