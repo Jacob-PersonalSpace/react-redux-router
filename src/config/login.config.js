@@ -1,5 +1,5 @@
 export const URL_ENV_MAPPING = {
-    'http://localhost:33886': 'K8S_DEV',     //更精确的地址放在前面
+    'http://localhost:33886': 'K8S_SIT',     //更精确的地址放在前面
     'http://localhost:22949': 'DOCKER',
     'http://localhost:{0}': 'LOCAL',    //{0}表示任意数字
     'http://127.0.0.1:{0}': 'DOCKER',

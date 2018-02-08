@@ -13,6 +13,7 @@ import ExpandedDirectory from '../../components/ExpandedDirectory/ExpandedDirect
 
 import '../css/handloom.less'
 
+import { SHOPPINGCART_HANDLOOM_BREADCRUMB } from '../../../constants/index'
 import bindFunctions from '../../../util/bind-functions'
 
 class HandLoom extends PureComponent {
@@ -32,6 +33,7 @@ class HandLoom extends PureComponent {
     }
 
     componentWillMount() {
+        this.props.actions.updateBreadcrumb(SHOPPINGCART_HANDLOOM_BREADCRUMB)
         console.log('HandLoom componentWillMount')
     }
 
@@ -57,11 +59,13 @@ class HandLoom extends PureComponent {
 
     onKeyPress(evt) {
         if (evt.key === 'Enter') {
-            this.textareaRef.blur()
+            if (!evt.shiftKey) {
+                this.textareaRef.blur()
 
-            evt.persist()
-            evt.returnValue = false
-            evt.preventDefault()
+                evt.persist()
+                evt.returnValue = false
+                evt.preventDefault()
+            }
         }
     }
 

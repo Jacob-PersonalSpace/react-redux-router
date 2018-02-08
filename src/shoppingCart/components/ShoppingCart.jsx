@@ -52,7 +52,7 @@ class ShoppingCart extends PureComponent {
     }
 
     onChangeSheet(value) {
-        // this.props.actions.shoppingCartActions.onChangeSheet(value)
+        this.props.actions.shoppingCartActions.onChangeSheet(value)
 
         if (value === SHOPPINGCART_SHEETS[0].value) {
             this.props.history.push(`${this.props.match.url}/handloom`)
@@ -68,8 +68,6 @@ class ShoppingCart extends PureComponent {
     render() {
         const { state, actions, match, history } = this.props
         const { shoppingCart, masterDataState, userProfileState } = state
-
-        console.log('????', shoppingCart)
 
         return (
             <div>

@@ -1,11 +1,5 @@
 import { fromJS } from 'immutable'
 
-// import {
-//     onAddUserErrorForAlert,
-//     onAddAPIRequestForBlockUi,
-//     onRemoveAPIRequestForBlockUi,
-// } from '../../actions'
-
 import {
     EXPAND_TRIALWEAVE_LEFT_CONTAINER,
     COLLAPSE_TRIALWEAVE_LEFT_CONTAINER,
