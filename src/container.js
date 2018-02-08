@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
+import ReduxBlockUi from 'react-block-ui/redux'
+import { Loader, Types } from 'react-loaders'
+import 'react-block-ui/style.css'
+import 'loaders.css/loaders.min.css'
 
 import PageHeader from './global/pageHeader/components/PageHeader.jsx'
 import Development from './development/components/Development.jsx'
@@ -19,9 +23,27 @@ import * as joAssignActions from './joAssign/actions'
 import * as pageHeaderActions from './global/pageHeader/actions'
 import * as globalActions from './global/actions'
 
+import {
+    REQUEST_SET_SHOPPINGCART_HEADER,
+    RECEIVE_SET_SHOPPINGCART_HEADER,
+    FAILURE_SET_SHOPPINGCART_HEADER,
+    ONFOCUS_SHOPPINGCART_TEXTAREA,
+    ONBLUR_SHOPPINGCART_TEXTAREA,
+} from './actionTypes/index'
+
+import bindFunctions from './util/bind-functions'
+
 class MainContainer extends PureComponent {
     constructor(props) {
         super(props)
+
+        bindFunctions.call(this, [
+            'renderCustomPageRequirement',
+            'onClickSaveButton',
+            'onClickProceedButton',
+            'onClickBackButton',
+            'onClickIssueButton',
+        ])
     }
 
     componentDidMount() {
@@ -50,6 +72,115 @@ class MainContainer extends PureComponent {
         console.log('MainContainer componentDidUpdate')
     }
 
+    onClickBackButton() {
+        this.props.history.push('/development')
+    }
+
+    onClickSaveButton() {
+        let fileContent = this.props.state.joAssign.getIn(['rightContainerState', 'fileContent'])
+
+        if (fileContent.size > 0) {
+            this.props.actions.joAssign.onClickSave(fileContent)
+        } else {
+            this.props.actions.global.onAddUserErrorForAlert({
+                title: 'WARNING',
+                message: 'Please open request file first.',
+                alertType: "warning",
+            })
+        }
+    }
+
+    onClickIssueButton() {
+        if (this.props.location.pathname.indexOf('/handloom') >= 0) {
+
+        } else if (this.props.location.pathname.indexOf('/trialweave') >= 0) {
+
+        } else if (this.props.location.pathname.indexOf('/fcr') >= 0) {
+
+        }
+    }
+
+    onClickProceedButton() {
+        let fileContent = this.props.state.joAssign.getIn(['rightContainerState', 'fileContent'])
+
+        if (fileContent.size > 0) {
+            let items = fileContent.getIn(['content', 0, 'body']).filter(row =>
+                row.getIn(['assignCheckBox', 'value']) === true || row.getIn(['assignCheckBox', 'value']) === "true"
+            )
+
+            if (items.size > 0) {
+                let issueData = fileContent.updateIn(['content', 0, 'body'], body => body.clear().push(...items))
+
+                this.props.actions.joAssign.onClickProceed(issueData)
+            } else {
+                this.props.actions.global.onAddUserErrorForAlert({
+                    title: 'WARNING',
+                    message: 'Please select issue items first.',
+                    alertType: "warning",
+                })
+            }
+        } else {
+            this.props.actions.global.onAddUserErrorForAlert({
+                title: 'WARNING',
+                message: 'Please open request file first.',
+                alertType: "warning",
+            })
+        }
+    }
+
+    renderCustomPageRequirement() {
+        const { state, actions, location } = this.props
+
+        if (location.pathname.indexOf('/joAssign') >= 0) {
+            return (
+                <ul className="actions">
+                    <li>
+                        <button
+                            className="released"
+                            onClick={() => this.onClickSaveButton()}
+                        >
+                            SAVE
+                            </button>
+
+                        <button
+                            className="proceed"
+                            onClick={() => this.onClickProceedButton()}
+                        >
+                            PROCEED
+                            </button>
+                    </li>
+                </ul>
+            )
+        } else if (location.pathname.indexOf('/shoppingCart') >= 0) {
+            return (
+                <ul className="actions">
+                    <li>
+                        <button
+                            className="released"
+                            onClick={() => this.onClickBackButton()}
+                        >
+                            BACK
+                            </button>
+
+                        <ReduxBlockUi
+                            className="block-ui-hidden"
+                            tag="div"
+                            block={[REQUEST_SET_SHOPPINGCART_HEADER, ONFOCUS_SHOPPINGCART_TEXTAREA]}
+                            unblock={[RECEIVE_SET_SHOPPINGCART_HEADER, ONBLUR_SHOPPINGCART_TEXTAREA, FAILURE_SET_SHOPPINGCART_HEADER]}
+                        >
+                            <button
+                                className="proceed"
+                                onClick={() => this.onClickIssueButton()}
+                            >
+                                ISSUE
+                            </button>
+                        </ReduxBlockUi>
+                    </li>
+                </ul>
+            )
+        }
+    }
+
     render() {
         const { state, actions } = this.props
         const { development, shoppingCart, joAssign, pageHeader, global } = state
@@ -75,7 +206,11 @@ class MainContainer extends PureComponent {
                 <PageHeader
                     state={pageHeader}
                     actions={{ ...actions.pageHeader }}
-                />
+                >
+                    {
+                        this.renderCustomPageRequirement()
+                    }
+                </PageHeader>
 
                 <Switch>
                     <Route path="/development" render={() => <Development
