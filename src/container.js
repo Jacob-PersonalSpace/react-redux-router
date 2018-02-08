@@ -218,8 +218,17 @@ class MainContainer extends PureComponent {
                         actions={{ ...actions.development }}
                     />} />
                     <Route path="/shoppingCart" render={() => <ShoppingCart
-                        state={shoppingCart}
-                        actions={{ ...actions.shoppingCart }}
+                        state={{
+                            shoppingCart,
+                            masterDataState: global.get('masterDataState'),
+                            userProfileState: global.get('userProfileState'),
+                        }}
+                        actions={{
+                            ...actions.shoppingCart,
+                            updateBreadcrumb: actions.pageHeader.updateBreadcrumb,
+                            onChangeSelectedCustomer: actions.global.onChangeSelectedCustomer,
+                            onChangeSelectedBrand: actions.global.onChangeSelectedBrand,
+                        }}
                     />} />
                     <Route path="/joAssign" render={() => <JoAssign
                         state={{
@@ -240,30 +249,30 @@ class MainContainer extends PureComponent {
 
 MainContainer.propTypes = {
     state: PropTypes.shape({
-        // shoppingCart: ImmutablePropTypes.contains({
-        //     handLoomState: ImmutablePropTypes.contains({
-        //         leftContainerState: ImmutablePropTypes.contains({
-        //             isExpanded: PropTypes.bool.isRequired,
-        //         }).isRequired,
-        //     }).isRequired,
-        //     trialWeaveState: ImmutablePropTypes.contains({
-        //         leftContainerState: ImmutablePropTypes.contains({
-        //             isExpanded: PropTypes.bool.isRequired,
-        //         }).isRequired,
-        //     }).isRequired,
-        //     fcrState: ImmutablePropTypes.contains({
-        //         leftContainerState: ImmutablePropTypes.contains({
-        //             isExpanded: PropTypes.bool.isRequired,
-        //         }).isRequired,
-        //     }).isRequired,
-        //     sheetSelectorState: ImmutablePropTypes.contains({
-        //         sheets: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
-        //             text: PropTypes.string.isRequired,
-        //             value: PropTypes.string.isRequired,
-        //         })),
-        //         selectedSheet: PropTypes.string.isRequired,
-        //     }).isRequired,
-        // }),
+        shoppingCart: ImmutablePropTypes.contains({
+            // handLoomState: ImmutablePropTypes.contains({
+            //     leftContainerState: ImmutablePropTypes.contains({
+            //         isExpanded: PropTypes.bool.isRequired,
+            //     }).isRequired,
+            // }).isRequired,
+            // trialWeaveState: ImmutablePropTypes.contains({
+            //     leftContainerState: ImmutablePropTypes.contains({
+            //         isExpanded: PropTypes.bool.isRequired,
+            //     }).isRequired,
+            // }).isRequired,
+            // fcrState: ImmutablePropTypes.contains({
+            //     leftContainerState: ImmutablePropTypes.contains({
+            //         isExpanded: PropTypes.bool.isRequired,
+            //     }).isRequired,
+            // }).isRequired,
+            sheetSelectorState: ImmutablePropTypes.contains({
+                sheets: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
+                    text: PropTypes.string.isRequired,
+                    value: PropTypes.string.isRequired,
+                })),
+                selectedSheet: PropTypes.string.isRequired,
+            }).isRequired,
+        }),
         joAssign: ImmutablePropTypes.contains({
             leftContainerState: ImmutablePropTypes.contains({
                 requestList: ImmutablePropTypes.listOf(ImmutablePropTypes.map.isRequired).isRequired,
