@@ -22,6 +22,9 @@ import * as shoppingCartActions from './shoppingCart/actions'
 import * as joAssignActions from './joAssign/actions'
 import * as pageHeaderActions from './global/pageHeader/actions'
 import * as globalActions from './global/actions'
+import * as handLoomActions from './global/handLoom/actions'
+import * as trialWeaveActions from './global/trialWeave/actions'
+// import * as fcrActions from './global/FCR/actions'
 
 import {
     REQUEST_SET_SHOPPINGCART_HEADER,
@@ -250,16 +253,16 @@ class MainContainer extends PureComponent {
 MainContainer.propTypes = {
     state: PropTypes.shape({
         shoppingCart: ImmutablePropTypes.contains({
-            // handLoomState: ImmutablePropTypes.contains({
-            //     leftContainerState: ImmutablePropTypes.contains({
-            //         isExpanded: PropTypes.bool.isRequired,
-            //     }).isRequired,
-            // }).isRequired,
-            // trialWeaveState: ImmutablePropTypes.contains({
-            //     leftContainerState: ImmutablePropTypes.contains({
-            //         isExpanded: PropTypes.bool.isRequired,
-            //     }).isRequired,
-            // }).isRequired,
+            handLoomState: ImmutablePropTypes.contains({
+                leftContainerState: ImmutablePropTypes.contains({
+                    isExpanded: PropTypes.bool.isRequired,
+                }).isRequired,
+            }).isRequired,
+            trialWeaveState: ImmutablePropTypes.contains({
+                leftContainerState: ImmutablePropTypes.contains({
+                    isExpanded: PropTypes.bool.isRequired,
+                }).isRequired,
+            }).isRequired,
             // fcrState: ImmutablePropTypes.contains({
             //     leftContainerState: ImmutablePropTypes.contains({
             //         isExpanded: PropTypes.bool.isRequired,
@@ -361,26 +364,26 @@ MainContainer.propTypes = {
         }),
     }),
     actions: PropTypes.shape({
-        // shoppingCart: PropTypes.shape({
-        //     shoppingCartActions: PropTypes.shape({
-        //         onChangeSheet: PropTypes.func.isRequired,
-        //         onChangeShoppingCartHeader: PropTypes.func.isRequired,
-        //         onFocusShoppingCartTextarea: PropTypes.func.isRequired,
-        //         onBlurShoppingCartTextarea: PropTypes.func.isRequired,
-        //     }).isRequired,
-        //     handLoomActions: PropTypes.shape({
-        //         onExpandDirectory: PropTypes.func.isRequired,
-        //         onCollapseDirectory: PropTypes.func.isRequired,
-        //     }).isRequired,
-        //     trialWeaveActions: PropTypes.shape({
-        //         onExpandDirectory: PropTypes.func.isRequired,
-        //         onCollapseDirectory: PropTypes.func.isRequired,
-        //     }).isRequired,
-        //     fcrActions: PropTypes.shape({
-        //         onExpandDirectory: PropTypes.func.isRequired,
-        //         onCollapseDirectory: PropTypes.func.isRequired,
-        //     }).isRequired,
-        // }),
+        shoppingCart: PropTypes.shape({
+            shoppingCartActions: PropTypes.shape({
+                onChangeSheet: PropTypes.func.isRequired,
+                onChangeShoppingCartHeader: PropTypes.func.isRequired,
+                onFocusShoppingCartTextarea: PropTypes.func.isRequired,
+                onBlurShoppingCartTextarea: PropTypes.func.isRequired,
+            }).isRequired,
+            handLoomActions: PropTypes.shape({
+                onExpandDirectory: PropTypes.func.isRequired,
+                onCollapseDirectory: PropTypes.func.isRequired,
+            }).isRequired,
+            trialWeaveActions: PropTypes.shape({
+                onExpandDirectory: PropTypes.func.isRequired,
+                onCollapseDirectory: PropTypes.func.isRequired,
+            }).isRequired,
+            // fcrActions: PropTypes.shape({
+            //     onExpandDirectory: PropTypes.func.isRequired,
+            //     onCollapseDirectory: PropTypes.func.isRequired,
+            // }).isRequired,
+        }),
         joAssign: PropTypes.shape({
             onClickFolder: PropTypes.func.isRequired,
             onExpandDirectory: PropTypes.func.isRequired,
@@ -433,7 +436,12 @@ const mapDispatchToProps = dispatch => {
     return {
         actions: {
             development: bindActionCreators({ ...developmentActions, }, dispatch),
-            shoppingCart: bindActionCreators({ ...shoppingCartActions, }, dispatch),
+            shoppingCart: {
+                shoppingCartActions: bindActionCreators({ ...shoppingCartActions, }, dispatch),
+                handLoomActions: bindActionCreators({ ...handLoomActions, }, dispatch),
+                trialWeaveActions: bindActionCreators({ ...trialWeaveActions, }, dispatch),
+                // fcrActions: bindActionCreators({ ...fcrActions, }, dispatch),
+            },
             joAssign: bindActionCreators({ ...joAssignActions, }, dispatch),
             pageHeader: bindActionCreators({ ...pageHeaderActions, }, dispatch),
             global: bindActionCreators({ ...globalActions, }, dispatch),
