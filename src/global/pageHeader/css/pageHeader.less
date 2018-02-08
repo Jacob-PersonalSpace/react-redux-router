@@ -24,6 +24,9 @@
                 &:not(:disabled) {
                     cursor: pointer;
                 }
+                &:not(.icon).proceed {
+                    background-color: #FF3A30;
+                }
             }
             &.active button,
             button:hover,
@@ -220,6 +223,32 @@
         margin-top: 11px;
         margin-right: 20px;
         li {
+            .block-ui-hidden {
+                display: inline-block;
+            }
+            .block-ui-container {
+                position: absolute;
+                z-index: 1010;
+                right: 1px;
+                bottom: 15px;
+                left: 6px;
+                top: 5px;
+                height: 5px;
+                min-height: 28px;
+                cursor: wait;
+                overflow: hidden;
+                .block-ui-overlay {
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.5;
+                    filter: alpha(opacity=50);
+                    background-color: white;
+                    border-radius: 14px;
+                }
+                .block-ui-message-container {
+                    display: none;
+                }
+            }
             float: left;
             button:not(.icon) {
                 box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, .2);

@@ -11,7 +11,13 @@ import {
     REQUEST_GETSYSTEMMENU,
     RECEIVE_GETSYSTEMMENU,
     FAILURE_GETSYSTEMMENU,
+    UPDATE_BREADCRUMB,
 } from '../../../actionTypes/index'
+
+export const updateBreadcrumb = data => ({
+    type: UPDATE_BREADCRUMB,
+    payload: fromJS(data),
+})
 
 export const selectMenuItem = item => ({
     type: SELECT_MENUITEM,
@@ -47,7 +53,9 @@ export const getSystemMenu = () => (dispatch, getState) => {
         dispatch(requestGetSystemMenu())
 
         getSystemMenuApi()
-            .then(data => dispatch(receiveGetSystemMenu(data)))
+            .then(data => {
+                dispatch(receiveGetSystemMenu(data))
+            })
             .catch(error => dispatch(failureGetSystemMenu(error)))
     } catch (error) {
         dispatch(failureGetSystemMenu(error))

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux-immutable'
 import { fromJS } from 'immutable'
 
+import { BASE_BREADCRUMB } from '../../../constants/index'
+
 import {
     SELECT_MENUITEM,
     ADD_MENUITEMSET,
@@ -8,6 +10,7 @@ import {
     REQUEST_GETSYSTEMMENU,
     RECEIVE_GETSYSTEMMENU,
     FAILURE_GETSYSTEMMENU,
+    UPDATE_BREADCRUMB,
 } from '../../../actionTypes/index'
 
 const initMenu = ""
@@ -40,7 +43,7 @@ export const menuItemSet = (state = initMenuItemSet, action) => {
     }
 }
 
-const initSystemMenu = fromJS({})
+const initSystemMenu = fromJS([])
 
 export const systemMenu = (state = initSystemMenu, action) => {
     switch (action.type) {
@@ -53,16 +56,19 @@ export const systemMenu = (state = initSystemMenu, action) => {
     }
 }
 
-const initBreadcrumb = ['Development', 'Fabric', 'Woven']
+const initBreadcrumb = fromJS(BASE_BREADCRUMB)
 
 export const breadcrumb = (state = initBreadcrumb, action) => {
     switch (action.type) {
+        case UPDATE_BREADCRUMB:
+            return action.payload
+
         default:
             return state
     }
 }
 
-const initSites = ['Workbench']
+const initSites = fromJS(['Workbench'])
 
 export const sites = (state = initSites, action) => {
     switch (action.type) {
@@ -71,7 +77,7 @@ export const sites = (state = initSites, action) => {
     }
 }
 
-const initMenuItems = ['Product', 'Development', 'Planning', 'TNA']
+const initMenuItems = fromJS(['Product', 'Development', 'Planning', 'TNA'])
 
 export const menuItems = (state = initMenuItems, action) => {
     switch (action.type) {
